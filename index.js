@@ -1,9 +1,7 @@
 function getIssues() {
   const repo = `https://api.github.com/repos/theschubinator/javascript-fetch-lab/issues`
 
-  fetch(repo, {
-    method: "get"
-  }).then(res => res.json()).then(json => showIssues(json))
+  fetch(repo).then(res => res.json()).then(json => showIssues(json))
 }
 
 function showIssues(json) {
