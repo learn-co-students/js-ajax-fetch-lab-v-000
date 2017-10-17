@@ -1,5 +1,5 @@
 function getIssues() {
-  const repo = `https://api.github.com/repos/dschlauderaff/javascript-fetch-lab/issues`
+  const repo = `https://api.github.com/repos/theschubinator/javascript-fetch-lab/issues`
 
   fetch(repo, {
     method: "get"
@@ -55,5 +55,5 @@ function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
   return ''
-
+  
 }
