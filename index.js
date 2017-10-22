@@ -51,12 +51,6 @@ function displayIssue(issue) {
   $('#issues').append(issue.template())
 }
 
-// function showIssues(json) {
-// }
-
-// function showResults(json) {
-// }
-
 function forkRepo() {
   const repo = 'learn-co-curriculum/javascript-fetch-lab'
 
