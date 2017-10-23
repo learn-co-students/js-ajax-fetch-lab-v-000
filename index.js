@@ -19,7 +19,6 @@ function myRepos(){
 }
 
 function showForkedRepo(repo){
-  console.log(repo)
   repoName = repo.split('/')[1]
   const repoURL  = `<a href="https://github.com/smithwebtek/${repoName}">repo URL</a>`
   $('#results').html(repoURL)
@@ -53,7 +52,6 @@ function showIssues(json) {
     issuesHTML += issue
   }
   issuesHTML += '</ul>'
-  console.log('The issues html in showIssues: ', issuesHTML)
   document.getElementById('issues').innerHTML = issuesHTML
 }
 
