@@ -1,25 +1,33 @@
 function getIssues() {
-  $.get(`https://api.github.com/repos/laramontana/javascript-fetch-lab/issues`)
-  .then(res => res.json())
-  .then(json => showIssues(json))
+  //$.get(`https://api.github.com/repos/laramontana/javascript-fetch-lab/issues`) returns a jqXHR object, not a Promise
+  fetch(`https://api.github.com/repos/laramontana/javascript-fetch-lab/issues`, { method: 'GET' })
+    .then(res => res.json())
+    .then(json => showIssues(json))
 }
 
 function showIssues(json) {
   const issues = json.map(issue => `<h2>${issue.title}</h2><p>${issue.body}</p>`)
-  $("#issues").append(issues)
+  $("#issues").html(issues)
 }
 
 function createIssue() {
-  const title = $("#title").val()
-  const body = $("#body").val()
+  // const title = $("#title").val()
+  const title = document.getElementById('title').value
+  // const body = $("#body").val()
+  const body = document.getElementById('body').value
   const data = {title: title, body: body}
-  fetch(`https://api.github.com/repos/laramontana/javascript-fetch-lab/forks`, {
+  fetch(`https://api.github.com/repos/laramontana/javascript-fetch-lab/issues`, {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
       Authorization: `token ${getToken()}`
     }
   }).then(res => getIssues())
+}
+
+function showResults(json) {
+  const url = json.html_url
+  $("#results").append(`<a target="_blank" href="${url}">${url}</a>`)
 }
 
 function forkRepo() {
@@ -32,11 +40,6 @@ function forkRepo() {
   })
   .then(res => res.json())
   .then(json => showResults(json))
-}
-
-function showResults(json) {
-  const url = json.html_url
-  $("#results").append(`<a target="_blank" href="${url}">${url}</a>`)
 }
 
 function getToken() {
