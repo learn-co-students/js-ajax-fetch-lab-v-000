@@ -17,7 +17,7 @@ function createIssue() {
   const body = document.getElementById('body').value
   const data = {title: title, body: body}
   fetch(`https://api.github.com/repos/laramontana/javascript-fetch-lab/issues`, {
-    method: 'POST',
+    method: 'post',
     body: JSON.stringify(data),
     headers: {
       Authorization: `token ${getToken()}`
@@ -33,7 +33,7 @@ function showResults(json) {
 function forkRepo() {
   const repo = 'learn-co-curriculum/javascript-fetch-lab'
   fetch(`https://api.github.com/repos/${repo}/forks`, {
-    method: 'POST',
+    method: 'post',
     headers: {
       Authorization: `token ${getToken()}`
     }
