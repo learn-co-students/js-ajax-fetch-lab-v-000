@@ -1,6 +1,5 @@
 function getIssues() {
-  const repoName = jQuery('a#repoLink')[0].innerHTML
-  debugger
+  const repoName = $('a#repoLink')[0].innerHTML
   fetch(`https://api.github.com/repos/${repoName}/issues`)
     .then(res => res.json()).then(json=> showIssues(json))
 }
@@ -10,7 +9,7 @@ function showIssues(json) {
 
   let issuesHTML = '<ul>'
   for (let i of json) {
-    debugger
+
     issuesHTML += `<li>
     <p>${i.title}</p>
     <p>${i.body}</p>
@@ -18,16 +17,15 @@ function showIssues(json) {
   }
   issuesHTML += '</ul>'
 
-  jQuery('div#issues').html(issuesHTML)
+  $('div#issues').html(issuesHTML)
 }
 
 function createIssue() {
-  const repoName = jQuery('a#repoLink')[0].innerHTML
+  const repoName = $('a#repoLink')[0].innerHTML
   const postData = {
-        title: jQuery('input#title')[0].value,
+        title: $('input#title')[0].value,
         body: jQuery('input#body')[0].value
       }
-  debugger
   fetch(`https://api.github.com/repos/${repoName}/issues`, {
     method: 'post',
     body: JSON.stringify(postData),
@@ -53,8 +51,8 @@ function forkRepo() {
 }
 
 function showForkedRepo(response){
-  jQuery('div#results').html(`
-    <p><a id="repoLink" href="https://github.com/${response.full_name}"">${response.full_name}</a></p>
+  $('div#results').html(`
+    <p><a id="repoLink" href="https://github.com/${response.full_name}">${response.full_name}</a></p>
     ${JSON.stringify(response)}
     `)
 }
