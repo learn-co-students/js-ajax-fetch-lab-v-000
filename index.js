@@ -1,25 +1,41 @@
 function getIssues() {
+  const repoName = jQuery('a#repoLink')[0].innerHTML
   debugger
   fetch(`https://api.github.com/repos/${repoName}/issues`)
-    .then(res => res.json())
-    .then(json => showIssues(json))
+    .then(res => res.json()).then(json=> showIssues(json))
 }
 
 function showIssues(json) {
-  console.log(json)
+  console.log(JSON.stringify(json))
+
+  let issuesHTML = '<ul>'
+  for (let i of json) {
+    debugger
+    issuesHTML += `<li>
+    <p>${i.title}</p>
+    <p>${i.body}</p>
+    <p>${i.user.login}</p>`
+  }
+  issuesHTML += '</ul>'
+
+  jQuery('div#issues').html(issuesHTML)
 }
 
 function createIssue() {
-  const repoName = $('a#repoLink')[0].innerHTML
+  const repoName = jQuery('a#repoLink')[0].innerHTML
+  const postData = {
+        title: jQuery('input#title')[0].value,
+        body: jQuery('input#body')[0].value
+      }
   debugger
   fetch(`https://api.github.com/repos/${repoName}/issues`, {
     method: 'post',
-    title: $('input#title')[0].value,
-    body: $('input#body')[0].value,
+    body: JSON.stringify(postData),
     headers: {
       Authorization: `token ${getToken()}`
     }
-  }).then(res => res.json())
+  }).then(res => res.json()).then(()=> getIssues())
+
 }
 
 function showResults(json) {
@@ -37,12 +53,12 @@ function forkRepo() {
 }
 
 function showForkedRepo(response){
-  $('div#results').html(`
+  jQuery('div#results').html(`
     <p><a id="repoLink" href="https://github.com/${response.full_name}"">${response.full_name}</a></p>
     ${JSON.stringify(response)}
     `)
 }
 
 function getToken() {
-  return 'f1338889df1a8111658a1caa7d1987edf4a438dd'
+  return '8fd3652b0121a1af5eaaa6d67b77e0c938326ad9'
 }
