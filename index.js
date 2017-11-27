@@ -1,6 +1,5 @@
 function getIssues() {
-  const repoName = $('a#repoLink')[0].innerHTML
-  fetch(`https://api.github.com/repos/${repoName}/issues`)
+  fetch(`https://api.github.com/repos/jmstrick93/javascript-fetch-lab/issues`)
     .then(res => res.json()).then(json=> showIssues(json))
 }
 
@@ -21,12 +20,13 @@ function showIssues(json) {
 }
 
 function createIssue() {
-  const repoName = $('a#repoLink')[0].innerHTML
+  let title = document.getElementById('title').value
+  let body = document.getElementById('body').value
   const postData = {
-        title: $('input#title')[0].value,
-        body: jQuery('input#body')[0].value
+        title: title,
+        body: body
       }
-  fetch(`https://api.github.com/repos/${repoName}/issues`, {
+  fetch(`https://api.github.com/repos/jmstrick93/javascript-fetch-lab/issues`, {
     method: 'post',
     body: JSON.stringify(postData),
     headers: {
@@ -58,5 +58,5 @@ function showForkedRepo(response){
 }
 
 function getToken() {
-  return '8fd3652b0121a1af5eaaa6d67b77e0c938326ad9'
+  return ''
 }
