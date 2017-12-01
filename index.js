@@ -32,7 +32,7 @@ function createIssue() {
     body: document.getElementById("body").value
   }
   fetch(repo, {
-    method: 'POST',
+    method: 'post',
     body: JSON.stringify(postData),
     headers: {
       Authorization: `token ${token}`,
@@ -55,7 +55,7 @@ function forkRepo() {
   const token = getToken()
   //use fetch to fork it!
   fetch( repo , {
-    method: 'POST',
+    method: 'post',
     headers: {
       Authorization: `token ${token}`
     }
