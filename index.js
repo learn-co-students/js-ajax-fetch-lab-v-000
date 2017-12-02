@@ -2,28 +2,25 @@ function getIssues() {
 }
 
 function showIssues(json) {
-  $("#results").html("<a href=`${json.html_url}`>")
 }
 
 function createIssue() {
 }
 
-function showResults(json) {
+function showForkedRepo(body) {
+  $("#results").html("<a href=`${body.html_url}`>${body.name}</a>")
 }
 
 function forkRepo() {
   const repo = 'learn-co-curriculum/javascript-fetch-lab'
   //use fetch to fork it
-  fetch(`https://api.github.com/repos/${repo}/forks`)
-  .then(resp => resp.json())
-  .then(json => console.log(json));
-
-  fetch('https://api.github.com/repos/ynebuhs/javascript-fetch-lab/forks', {
-    method: 'POST',
+  fetch(`https://api.github.com/repos/${repo}/forks`, {
+    method: 'post',
     headers: {
     Authorization: `token ${getToken()}`
   }
-}).then(res => showResults(res));
+}).then(res => res.json()).
+then(showForkedRepo);
 }
 
 function getToken() {
