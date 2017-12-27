@@ -23,7 +23,7 @@ describe('index', () => {
 
   it('does not commit token', () => {
     expect(getToken()).toEqual('')
-  })
+  })//cause that would be bad for my privacy...
 
   describe('index.html', () => {
     it('creates a div with an id of "issues"', () => {
