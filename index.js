@@ -1,4 +1,4 @@
-const token = '3adb3c520677c71648a18144424e6bbefc618c72';
+
 
 function getIssues(json) {
   fetch('https://api.github.com/repos/ndalcin/javascript-fetch-lab/issues', {
