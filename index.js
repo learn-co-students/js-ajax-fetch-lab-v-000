@@ -1,4 +1,4 @@
-//const token = ''
+const token = ''
 const userName = 'hyoyou'
 
 //Fetch and show repo info
@@ -21,18 +21,25 @@ function forkRepo() {
 }
 
 function showForkedRepo(json) {
-  const repoName = json.name;
-  const repoURL = json.html_url;
-  return `<a href="${repoURL}" id="url" target="_blank">${repoName}</a>`
+  return `<h3>Forked Successfully!</h3><a href="${json.html_url}" id="url" target="_blank">${json.html_url}</a>`
 }
 
 //Fetch all issues through the Github API and display / append to the DOM
+function Issue(attributes) {
+  this.title = attributes.title;
+  this.body = attributes.body;
+  this.url = attributes.url
+}
+
 function getIssues() {
-  fetch('https://api.github.com/${userName}/javascript-fetch-lab/issues', {
-    headers: {
-      'Authorization': `token ${getToken()}`
-    }
-  }).then(res => res.json()).then(json => console.log(json));
+  fetch(`https://github.com/${userName}/javascript-fetch-lab/issues`).
+    then(resp => {
+      resp.json().then(json => {
+        for (let i = 0; i < json.length; i++){
+          showIssues(new Issue(data[i]));
+        }
+      })
+    })
 }
 
 function showIssues(json) {
