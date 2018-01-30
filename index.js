@@ -1,5 +1,17 @@
 const baseApi = `https://api.github.com`
 
+class Repo {
+  constructor(responseData) {
+    this.url = responseData.url
+  }
+
+  template() {
+    return `<h3>Forked Successfully!</h3><a href="${this.url}">View All Forks</a>`
+  }
+}
+
+
+
 function getIssues() {
 }
 
@@ -24,6 +36,8 @@ function forkRepo() {
   }).then((response) => {
     console.log(this);
     console.log(response);
+    const repo = new Repo(response)
+    repo.template()
   })
 }
 
