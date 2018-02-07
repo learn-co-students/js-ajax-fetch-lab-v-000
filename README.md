@@ -25,6 +25,7 @@ GitHub's [v3 API](https://developer.github.com/v3/) uses [OAuth2][GitHub OAuth] 
 
 Fortunately, GitHub also allows you to generate your own personal authorization token that we can use to give us authorized access to the API.
 
+
 If you already have a personal token that you've been using to make API requests, you can keep using that one. Otherwise, you'll need to generate a new one.
 
 To start, go to [github.com/settings/tokens](https://github.com/settings/tokens) and click "Generate new token." Name it something like "Learn.co", and check `repo` scope. Once you generate the token, make sure to copy and paste it somewhere, because once you leave that page, you won't be able to see it again.
