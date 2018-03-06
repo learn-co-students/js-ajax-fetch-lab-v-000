@@ -1,4 +1,4 @@
-const token = 'afd01442064fc1eaa898623f71060316f26ca078';
+
 const userName = ''
 const baseApi = 'https://api.github.com/'
 const fork = `${userName}/javascript-fetch-lab`
