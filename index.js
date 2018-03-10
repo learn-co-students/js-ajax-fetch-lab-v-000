@@ -19,8 +19,7 @@ function createIssue() {
     headers: {
       Authorization: `token ${getToken()}`
     }
-  }).then(getIssues())
-  // .then(getIssues()).then(response => response.json()).then(json => showIssues(json));
+  }).then(response => getIssues())
 }
 
 function showResults(json) {
