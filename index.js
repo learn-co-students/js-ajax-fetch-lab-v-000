@@ -31,7 +31,7 @@ function createIssue() {
 
 function showResults(json) {
   // In showForkedRepo, display the repo information in the browser by appending html with a link to the repository url to the DOM.
-  $("results").append()
+  $("results").append('<a href="${json.html_url}">${json.name}</a>')
 
 }
 
