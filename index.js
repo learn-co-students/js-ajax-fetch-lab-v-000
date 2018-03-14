@@ -28,6 +28,6 @@ function forkRepo() {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  //c2781b17d78121eeceedd44e0a0e301c1261a74a
-  return 'c2781b17d78121eeceedd44e0a0e301c1261a74a'
+  //
+  return ''
 }
