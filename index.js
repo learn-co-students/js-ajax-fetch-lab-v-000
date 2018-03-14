@@ -7,7 +7,7 @@ function getIssues() {
  }
 
  function showIssues(json) {
-	let issues = 'f695a54f1ddfcce7781284ef11c06a1b3c08fef9'
+	let issues = ''
 	for(let i = 0; i < json.length; i++){
 		const issue = `<p>Title: ${json[i].title} Body: ${json[i].body}</p><br/>`
 		issues += issue
