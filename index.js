@@ -1,18 +1,20 @@
-function getIssues() {
-}
-
-function showIssues(json) {
-}
-
-function createIssue() {
-}
-
-function showResults(json) {
-}
+const repoURI = 'https://api.github.com/repos/learn-co-curriculum/javascript-fetch-lab/forks'
+const issueURI = 'https://api.github.com/repos/javascript-fetch-lab/forks'
 
 function forkRepo() {
-  const repo = 'learn-co-curriculum/javascript-fetch-lab'
-  //use fetch to fork it!
+  fetch(repoURI, {
+    method: 'post',
+    headers: {
+      Authorization: `token ${getToken()}`
+    }
+  }).then(resp => {
+    this.url = resp.url;
+    showForkedRepo(resp);
+  })
+}
+
+function showForkedRepo(resp){
+  $('#results').append(`Forked: <a href="${this.url}"> ${this.url}</a>`);
 }
 
 function getToken() {
