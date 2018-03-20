@@ -34,7 +34,7 @@ function createIssue() {
     headers: {
       Authorization: `token ${getToken()}`
     },
-    body: JSON.stringify({ title: issueTitle, body: issueBody })
+    body: 'title: ${issueTitle}, body: ${issueBody}'
   }).then(resp => {
     this.url = resp.url;
     this.body = resp.body;
