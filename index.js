@@ -34,21 +34,28 @@ function createIssue() {
     headers: {
       Authorization: `token ${getToken()}`
     },
-    body: 'title: ${issueTitle}, body: ${issueBody}'
-  }).then(resp => {
-    this.url = resp.url;
-    this.body = resp.body;
-    this.title = resp.title;
-    showIssues(resp);
-  })
+    body: `Title: ${issueTitle}<br>Body: ${issueBody}`
+  }).then(resp =>
+    getIssues())
 }
 
 //Fetch all issues through the Github API and display / append to the DOM
 
 function getIssues(resp) {
+  fetch(issueURI, {
+    method: 'post',
+      headers: {
+        Authorization: `token ${getToken()}`
+      }
+    }).
+    then(resp => {
+      resp.json().then( data => {
+        for (let i = 0; i < data.length; i++){
+          showIssues(data[i]);
+        }
+      } )
+    })
 }
-
-
 function showIssues(data) {
   $('#issues').append(`<li>Title: <a href="${data.url}">${data.title} </a><br>Body: ${data.body}</li>`)
 }
