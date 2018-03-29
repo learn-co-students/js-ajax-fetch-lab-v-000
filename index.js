@@ -6,7 +6,6 @@ function getToken() {
 
 function forkRepo() {
   const repo = 'learn-co-curriculum/javascript-fetch-lab'
-  //use fetch to fork it!
   fetch(`https://api.github.com/repos/${repo}/forks`, {
   	method: 'post',
 	headers: {
@@ -16,12 +15,27 @@ function forkRepo() {
 }
 
 function showResults(json) {
-	let link = `<a href="${json.url}">Repository Link</a>`
+	let link = `<a href="${json.url}">${json.url}</a>`
 	$('#results').append(link)
+  console.log(json)
+}
+
+function createIssue() {
+	const issueData = {
+		title: document.getElementById('title').value,
+		body: document.getElementById('body').value
+	}
+	fetch('https://api.github.com/repos/brittmmendez/javascript-fetch-lab/issues', {
+  	method: 'post',
+  	body: JSON.stringify(issueData),
+	headers: {
+		Authorization: `token ${getToken()}`
+	}
+	}).then(res => getIssues())
 }
 
 function getIssues() {
-	fetch(`https://api.github.com/repos/travislavery/javascript-fetch-lab/issues`, {
+	fetch('https://api.github.com/repos/brittmmendez/javascript-fetch-lab/issues', {
 	headers: {
 		Authorization: `token ${getToken()}`
 	}
@@ -35,18 +49,4 @@ function showIssues(json) {
 		issues += issue
 	}
 	$('#issues').html(issues)
-}
-
-function createIssue() {
-	const issueData = {
-		title: document.getElementById('title').value,
-		body: document.getElementById('body').value
-	}
-	fetch(`https://api.github.com/repos/travislavery/javascript-fetch-lab/issues`, {
-  	method: 'post',
-  	body: JSON.stringify(issueData),
-	headers: {
-		Authorization: `token ${getToken()}`
-	}
-	}).then(res => getIssues())
 }
