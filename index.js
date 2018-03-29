@@ -17,7 +17,7 @@ function forkRepo() {
 
 function showResults(json) {
 	let link = `<a href="${json.url}">Repository Link</a>`
-	$('#results').html(link)
+	$('#results').append(link)
 }
 
 function getIssues() {
