@@ -14,12 +14,13 @@ function showForkedRepo(json) {
 }
 
 function forkRepo() {
-  const repo = 'learn-co-curriculum/javascript-fetch-lab'
-  fetch(`https://api.github.com/repos/${repo}/forks`, {
+
+  //const repo = 'learn-co-curriculum/javascript-fetch-lab'
+
+  fetch('https://api.github.com/repos/learn-co-curriculum/javascript-fetch-lab/forks', {
     method: 'post',
     headers: {
-      Authorization: `token ${getToken()}`
-
+      Authorization: 'token bda7ca5c8863978cb4b8f4fd1fec9c2c0c36f473'
     }
   }).then(function(res){
 
