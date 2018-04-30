@@ -19,6 +19,7 @@ function forkRepo() {
     method: 'post',
     headers: {
       Authorization: `token ${getToken()}`
+
     }
   }).then(function(res){
 
@@ -32,5 +33,5 @@ function forkRepo() {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return '302ec755f0d9056dff64a58494c10e324f367ece'
+  return 'bda7ca5c8863978cb4b8f4fd1fec9c2c0c36f473'
 }
