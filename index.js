@@ -1,5 +1,5 @@
-const username = 'lindsay-c-dennis'
-const fork = `${username}/javascript-fetch-lab`
+const username = 'lindsay-c-dennis';
+const fork = `${username}/javascript-fetch-lab`;
 
 function Repo(attributes) {
   this.url = attributes.url;
@@ -22,7 +22,7 @@ Repo.prototype.template = function() {
 };
 
 function getIssues(data) {
-  fetch(`https://api.github.com/repos/${fork}/issues`).then(res => {
+  fetch(`https://api.github.com/repos/${username}/javascript-fetch-lab/issues`).then(res => {
     res.json().then( data => {
       for (let i=0; i<data.length; i++) {
         displayIssue(new Issue(data[i]));
@@ -43,7 +43,7 @@ function createIssue() {
   const issueBody = document.getElementById('body').value;
   const postData = { title: issueTitle, body: issueBody }
 
-  fetch(`https://api.github.com/`, {
+  fetch(`https://api.github.com/repos/${fork}/issues`, {
     method: 'post',
     headers: {
       Authorization: `token: ${getToken()}`
