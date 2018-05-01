@@ -1,5 +1,19 @@
+const username = 'lindsay-c-dennis'
+const fork = `${username}/javascript-fetch-lab`
+
 function Repo(attributes) {
   this.url = attributes.url;
+}
+
+function Issue(attributes) {
+  this.title = attributes.title
+  this.body = attributes.body
+  this.url = attributes.url;
+}
+
+Issue.prototype.template = function() {
+  let template = `<li>Title: <a href="${this.url}">${this.title}</a><span>Body: ${this.body}</span></li>`;
+  return template;
 }
 
 Repo.prototype.template = function() {
@@ -7,13 +21,35 @@ Repo.prototype.template = function() {
   return template;
 };
 
-function getIssues() {
+function getIssues(data) {
+  fetch(`https://api.github.com/repos/${fork}/issues`).then(res => {
+    res.json().then( data => {
+      for (let i=0; i<data.length; i++) {
+        displayIssue(new Issue(data[i]));
+      }
+    })
+  })
+}
+
+function displayIssue(issue) {
+  $('#issues').append(issue.template());
 }
 
 function showIssues(json) {
 }
 
 function createIssue() {
+  const issueTitle = document.getElementById('title').value;
+  const issueBody = document.getElementById('body').value;
+  const postData = { title: issueTitle, body: issueBody }
+
+  fetch(`https://api.github.com/`, {
+    method: 'post',
+    headers: {
+      Authorization: `token: ${getToken()}`
+    },
+    body: JSON.stringify(postData),
+  }).then(res => getIssues())
 }
 
 function showResults(json) {
@@ -21,12 +57,11 @@ function showResults(json) {
 
 function forkRepo() {
   const repo = 'learn-co-curriculum/javascript-fetch-lab';
-  const token = getToken();
   //use fetch to fork it!
   fetch(`https://api.github.com/repos/${repo}/forks`, {
     method: 'post',
     headers: {
-      Authorization: `token ${token}`
+      Authorization: `token ${getToken()}`
     }
   }).then(res => {
     let repo = new Repo(res);
