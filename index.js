@@ -1,5 +1,3 @@
-const token = 'fff638a0b48b88d0a85b308fced68b0580241b4c';
-
 function Issue(attributes){
   this.url = attributes.url;
   this.title = attributes.title;
@@ -19,24 +17,22 @@ function getIssues() {
    })
 }
 
-
-
 Issue.prototype.template = function(){
    var template = `<li>Title: <a href="${this.url}">${this.title} </a><span> | Body: ${this.body}</span></li>`
    return template;
 };
 
 function displayIssue(issue) {
-  $('#issues').append(issue.template())
+  document.getElementById('issues').append(issue.template())
 }
 
 
 function createIssue() {
 
 	//get the inputs to build an issues
-	const title = $('#title')[0].value
-	const text = $('#body')[0].value
-	const postData = { title: title, body: text }
+	const title = document.getElementById('title').value
+	const body = document.getElementById('body').value
+	const postData = {title: title, body: body}
 	// Create an instance of an issue
 	// post it to the right address
 	fetch(`https://api.github.com/repos/lizzie92869/javascript-fetch-lab/issues`, {
@@ -49,12 +45,6 @@ function createIssue() {
     body: JSON.stringify(postData)
   }).then(resp => getIssues())
 }
-
-
-
-
-
-
 
 function Repo(attributes){
   this.url = attributes.url;
@@ -69,7 +59,7 @@ Repo.prototype.template = function(){
 
 function showForkedRepo(json) {
 	$(document).ready(function(){
-		$('#results').append(json.template())
+		document.getElementById('results').append(json.template())
 	});
 
 }
@@ -93,11 +83,6 @@ function forkRepo() {
 
 }
 
-
-
-
 function getToken() {
-  //change to your token to run in browser, but set
-  //back to '' before committing so all tests pass
   return ''
 }
