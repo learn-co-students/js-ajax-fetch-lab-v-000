@@ -1,15 +1,35 @@
-const token = '01a0b82fb3b645a59225c0092c2bf572b6686fab';
+const token = 'fff638a0b48b88d0a85b308fced68b0580241b4c';
+
+function Issue(attributes){
+  this.url = attributes.url;
+  this.title = attributes.title;
+  this.body = attributes.body;
+}
 
 
 function getIssues() {
 	fetch(`https://api.github.com/repos/lizzie92869/javascript-fetch-lab/issues`)
-   .then(resp => resp.json())
-   debugger
-   .then(resp => showIssues())
+   .then(resp => {
+    resp.json()
+    .then( data => {
+        for (let i = 0; i < data.length; i++){
+          displayIssue(new Issue(data[i]));
+        }
+    } )
+   })
 }
 
-function showIssues(json) {
+
+
+Issue.prototype.template = function(){
+   var template = `<li>Title: <a href="${this.url}">${this.title} </a><span> | Body: ${this.body}</span></li>`
+   return template;
+};
+
+function displayIssue(issue) {
+  $('#issues').append(issue.template())
 }
+
 
 function createIssue() {
 
