@@ -1,22 +1,43 @@
+const baseURL = 'https://api.github.com'
+const owner = 'jacobsilver2'
+const repo = 'javascript-fetch-lab'
+const token = 'cc88d391dac23e8773dcf5a7609c32a18993dcb1'
+const fakeToken = ''
+
 function getIssues() {
+  const url = `${baseURL}/repos/${owner}/${repo}/issues`
+  fetch(url)
+  .then(resp => resp.json())
+  .then(json => showIssues(json))
 }
 
 function showIssues(json) {
-  console.log(json);
+  $('#issues').html(renderIssues(json))
+}
+
+function renderIssues(json) {
+  return json.map(issue => {
+    return `
+      <h1>Title: ${issue.title}</h1><br>
+      <p>Body: ${issue.body}</p>
+    `
+  })
 }
 
 function createIssue() {
-  const repo = 'https://api.github.com/repos/jacobsilver2/javascript-fetch-lab/issues'
+  const url = `${baseURL}/repos/${owner}/${repo}/issues`
   const postData = {
     title: document.getElementById('title').value,
     body: document.getElementById('body').value
   }
 
-  fetch(repo, {
-    method: 'POST',
-    title: document.getElementById('title').value,
-    body: document.getElementById('body').value
-  }).then(res => res.json()).then(json => showIssues(json))
+  fetch(url, {
+    method: 'post',
+    headers: {
+      'Authorization': `token ${getToken()}`
+    },
+    body: JSON.stringify(postData)
+  }).then(res => res.json()).then(json => getIssues())
 }
 
 function showResults(json) {
@@ -27,9 +48,9 @@ function showResults(json) {
 }
 
 function forkRepo() {
-  const repo = 'https://api.github.com/repos/learn-co-curriculum/javascript-fetch-lab/forks'
-  fetch(repo, {
-    method: 'POST',
+  const url = `${baseURL}/repos/learn-co-curriculum/javascript-fetch-lab/forks`
+  fetch(url, {
+    method: 'post',
     headers: {
       Authorization: `token ${getToken()}`
     }
@@ -39,6 +60,6 @@ function forkRepo() {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return 'cc88d391dac23e8773dcf5a7609c32a18993dcb1'
+  return `${fakeToken}`
 }
 
