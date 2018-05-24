@@ -1,10 +1,53 @@
-function getIssues() {
+const userName = ''
+const baseApi = 'https://api.github.com/'
+const fork = `${userName}/javascript-fetch-lab`
+
+function Issue(attributes){
+  this.title = attributes.title;
+  this.body = attributes.body;
+  this.url = attributes.url;
 }
 
-function showIssues(json) {
+function Repo(attributes){
+  this.url = attributes.url;
+}
+
+Issue.prototype.template = function(){
+   var template = `<li>Title: <a href="${this.url}">${this.title} </a><span> | Body: ${this.body}</span></li>`
+   return template;
+};
+
+Repo.prototype.template = function(){
+  var template = `<h3>Forked Successfully!</h3><a href="${this.url}"> ${this.url}</a>`
+  return template;
+};
+
+function getIssues() {
+  fetch(`${baseApi}repos/${fork}/issues`).
+    then(resp => {
+      resp.json().then( data => {
+        for (let i = 0; i < data.length; i++){
+          displayIssue(new Issue(data[i]));
+        }
+      } )
+    })
+}
+
+function showIssues(issue) {
+   $('#issues').append(issue.template())
 }
 
 function createIssue() {
+  const issueTitle = document.getElementById('title').value
+  const issueBody = document.getElementById('body').value
+  const postData = { title: issueTitle, body: issueBody }
+  fetch(`${baseApi}repos/${fork}/issues`, {
+    method: 'post',
+    headers: {
+      'Authorization': `token ${getToken()}`
+    },
+    body: JSON.stringify(postData)
+  }).then(resp => getIssues())
 }
 
 function showResults(json) {
@@ -14,28 +57,33 @@ function forkRepo() {
   const repo = 'learn-co-curriculum/javascript-fetch-lab'
   //use fetch to fork it!
   fetch(`https://api.github.com/repos/${repo}/forks`, {
-    method: 'POST',
+    method: 'post',
     headers: {
       Authorization: `token ${getToken()}`
     }
   }).then(res => {
     console.log(res)
-    showForkedRepo(res)});
+    return res.json()})
+    .then(data => {
+      console.log(data)
+
+     showForkedRepo(data)
+    });
 }
 
-function showForkedRepo(res) {
+function showForkedRepo(repo) {
 
-  $('#results').append(formatLink(res));
+  $('#results').append(formatLink(repo));
 }
 
-function formatLink(res) {
+function formatLink(repo) {
   return `<div>
-           <a href="${res.url}">Forked Repo</a>
+           <a href="${repo.html_url}">Forked Repo</a>
            </div `
 }
 
 
 
 function getToken() {
-  return 'e3ea1222710d2e156a7142bef2200df91339c974'
+  return ''
 }
