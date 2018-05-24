@@ -19,11 +19,12 @@ function forkRepo() {
       Authorization: `token ${getToken()}`
     }
   }).then(res => {
-    console.log(res);
+    console.log(res)
     showForkedRepo(res)});
 }
 
 function showForkedRepo(res) {
+
   $('#results').append(formatLink(res));
 }
 
