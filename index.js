@@ -30,17 +30,13 @@ function createIssue() {
 }
 
 function showResults(json) {
-  // console.log(json);
-  // debugger
   document.getElementById('results').innerHTML = `<a href=${json.html_url}>Link to Repo</a>`;
 }
 
 function forkRepo() {
   const repo = 'learn-co-curriculum/javascript-fetch-lab'
-  // const token = '55172a52ac3181052e3286f4fb54114ec01bff9b'
   fetch(`${baseURL}/repos/${repo}/forks`, {
     method: /post/,
-    // body: JSON.stringify(''),
     headers: {
       Authorization: `token ${getToken()}`
     }
