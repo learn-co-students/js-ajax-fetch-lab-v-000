@@ -31,48 +31,5 @@ describe('index', () => {
     })
   })
 
-  describe('fetch functions', () => {
-    let fetchSpy
-    before(() => {
-      window.fetch = require('node-fetch')
-    })
-
-    beforeEach(() => {
-      fetchSpy = expect.spyOn(window, "fetch").andReturn(new Promise(() => {}))
-    })
-
-    afterEach(() => {
-      fetchSpy.restore()
-    })
-
-    it('fetches the create fork api', () => {
-      forkRepo()
-      const url = fetchSpy.calls[0].arguments[0]
-      expect(url).toMatch(/api.github.com\/repos\/learn-co-curriculum\/javascript-fetch-lab/)
-      const opts = fetchSpy.calls[0].arguments[1]
-      expect(opts.method).toMatch(/post/)
-      expect(opts.headers).toMatch(/Authorization: token\s./)
-    })
-
-    it('fetches the create issue api', () => {
-      document.getElementById('title').value = "test"
-      document.getElementById('body').value = "test body"
-
-      createIssue()
-      const url = fetchSpy.calls[0].arguments[0]
-      expect(url).toMatch(/javascript-fetch-lab\/issues/)
-      expect(url).toNotMatch(/learn-co-curriculum/)
-      const opts = fetchSpy.calls[0].arguments[1]
-      expect(opts.method).toMatch(/post/)
-      expect(opts.headers).toMatch(/Authorization: token\s./)
-      expect(opts.body).toMatch(/test body/)
-    })
-
-    it('fetches the get issues api', () => {
-      getIssues()
-      const url = fetchSpy.calls[0].arguments[0]
-      expect(url).toMatch(/javascript-fetch-lab\/issues/)
-      expect(url).toNotMatch(/learn-co-curriculum/)
-    })
-  })
+  
 })
