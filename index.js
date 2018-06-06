@@ -28,8 +28,8 @@ function showIssues(json) {
 }
 
 function createIssue() {
-  const title = $("#title").val()
-  const body = $("body").val()
+  const title = document.getElementById("title").value
+  const body = document.getElementById("body").value
   const post = {title: title, body: body};
   var repo = 'srolandmarshall/javascript-fetch-lab'
   fetch(`https://api.github.com/repos/${repo}/issues`,{
@@ -62,5 +62,5 @@ function forkRepo() {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return 'b294172099bc3c4cd2f4a8c877232d04b8b37c4b';
+  return '';
 }
