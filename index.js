@@ -11,13 +11,10 @@ function getIssues() {
   .then(json => showIssues(json))
 }
 
-function renderIssues(issue){
-  return `<li><b>Title: </b><span>${issue.title}</span><br>
-  <b>URL: </b><span>${issue.html_url}</span><br></li>`
-}
-
 function showIssues(json) {
-  const issues = json.map(issue => renderIssues(issue))
+  const issues = json.map(issue => `<li><b>Title: </b><span>${issue.title}</span><br>
+  <b>URL: </b><span>${issue.html_url}</span><br></li>`)
+  
   $('#issues').html(`<ul>${issues}</ul`)
 }
 
