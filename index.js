@@ -25,6 +25,7 @@ function createIssue() {
 }
 
 function showResults(json) {
+
   const resultsDiv = document.getElementById('results');
   const repoLink = `<a href='${json.html_url}' id='repo-full-name'>${json.full_name}</a>`;
   resultsDiv.innerHTML = repoLink;
@@ -42,5 +43,6 @@ function forkRepo() {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
+
   return '';
 }
