@@ -27,7 +27,7 @@
     <div class="flexbox-container">
       <div>
         <h3>Create Fork</h3>
-        <p><a href="#" onclick="forkRepo()">Fork Repository</a></p>
+        <p><a href="#" onclick="forkRepo();">Fork Repository</a></p>
         <div id="results"></div>
       </div>
       <div>
@@ -36,10 +36,12 @@
           Issue Title: <input type="text" id="title"><br>
           Issue Text: <input type="text" id="body"><br>
           <a href="#" id="search" onclick="createIssue()">Create Issue</a>
+          <p><a href="#" onclick="getIssues()">List Issues</a></p>
         </div>
         <div id="issues"></div>
       </div>
     </div>
+
     <script src="index.js"></script>
   </body>
 </html>
