@@ -71,7 +71,7 @@ All of these additional settings go in that `options` argument, which is just an
 
 Finally, we can examine the response in our `then` function just the same as we did with a `GET` request.
 
-**Top-tip:** Make sure you read the API documentation carefully! They will often specify which fields are required and which are optional, as well as the format of the request body. GitHub expects JSON data in the body, but another API might want form data (which you can create with `new FormData()` or XML or something else. Always read the docs!
+**Top-tip:** Make sure you read the API documentation carefully! They will often specify which fields are required and which are optional, as well as the format of the request body. GitHub expects JSON data in the body, but another API might want form data (which you can create with `new FormData()` or XML or something else. Always read the docs!)
 
 ## Instructions
 We're going to be making an app to allow us to fork a repo and create issues on that fork. The basic HTML and JavaScript are provided in `index.html` and `index.js`. Your job will be to follow the instructions and complete the code to make it work. Don't forget to run it in the browser to see it in action, and run the tests to make sure they pass!
