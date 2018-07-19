@@ -1,5 +1,5 @@
 function getIssues() {
-  let repo = $("#results a")[0].innerHTML;
+  let repo = 'aspenjames/javascript-fetch-lab';
   fetch(`https://api.github.com/repos/${repo}/issues`).
     then(result => result.json()).
     then(json => showIssues(json));
@@ -18,10 +18,10 @@ function showIssues(json) {
 
 function createIssue() {
   let issueData = {
-    title: $("#title")[0].value,
-    body:  $("#body")[0].value
+    title: document.getElementById("title").value,
+    body:  document.getElementById("body").value
   };
-  let repo = $("#results a")[0].innerHTML;
+  let repo = 'aspenjames/javascript-fetch-lab';
   fetch(`https://api.github.com/repos/${repo}/issues`, {
     method: 'post',
     body: JSON.stringify(issueData),
