@@ -70,5 +70,5 @@ function showRepo(repo) {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return '89308db41c7d8d5dd27b7d5977ddc2044290b207'
+  return ''
 }
