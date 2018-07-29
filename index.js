@@ -1,16 +1,43 @@
 
+const username = ''
 
+function Issue(attributes){
+  this.title = attributes.title;
+  this.body = attributes.body;
+  this.url = attributes.url;
+}
 
-function getIssues() {
+function getIssues(data) {
+  const fork = `https://api.github.com/repos/${username}/javascript-fetch-lab/issues`
+
+  fetch(fork).then(resp => {
+
+    resp.json().then( data => {
+
+      for(let i = 0; i < data.length; i++){
+
+        showIssues(new Issue(data[i]))
+      }
+    })
+  })
 }
 
 function showIssues(json) {
+  $('#issues').append(`<li>Title: <a href="${json.url}">${json.title} </a><span> | Body: ${json.body}</span></li>`)
 }
 
 function createIssue() {
- const issueTitle = $('#title').val()
- const issueBody = $('#body').val()
-
+  const issueTitle = document.getElementById('title').value
+  const issueBody = document.getElementById('body').value
+ const issueData = { title: issueTitle, body: issueBody }
+ debugger
+ fetch(`https://api.github.com/repos/${username}/javascript-fetch-lab/issues`, {
+    method: 'post',
+    headers: {
+      'Authorization': `token ${getToken()}`
+    },
+    body: JSON.stringify(issueData)
+  }).then(resp => getIssues())
 
 }
 
@@ -43,5 +70,5 @@ function showRepo(repo) {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return ''
+  return '89308db41c7d8d5dd27b7d5977ddc2044290b207'
 }
