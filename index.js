@@ -1,25 +1,33 @@
-const username = 'AlexGZhang2014'
+const username = ''
 const fork = `${username}/javascript-fetch-lab`
 
 function getIssues() {
-  fetch(`https://api.github.com/repos/${fork}/issues`, {
-    headers: {
-      Authorization: `token ${getToken()}`
-    }
-  }).then(json => showIssues(json));
+  fetch(`https://api.github.com/repos/${fork}/issues`)
+    .then(res => res.json()).then(json => showIssues(json));
+}
+
+function displayIssues(json) {
+  for (let i = 0; i < json.length; i++) {
+    return `
+      <p><a href="${json[i].url}">${json[i].title}</a> - ${json[i].body}</p>
+    `
+  }
 }
 
 function showIssues(json) {
   let result = document.getElementById("issues");
-  result.innerHTML = `${json.title}`;
+  result.innerHTML = displayIssues(json);
   console.log(json);
 }
 
 function createIssue() {
+  const data = {
+    title: document.getElementById("title").value,
+    body: document.getElementById("body").value
+  }
   fetch(`https://api.github.com/repos/${fork}/issues`, {
     method: 'post',
-    title: JSON.stringify(document.getElementById("title").value),
-    body: JSON.stringify(document.getElementById("body").value),
+    body: JSON.stringify(data),
     headers: {
       Authorization: `token ${getToken()}`
     }
