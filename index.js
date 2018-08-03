@@ -30,8 +30,7 @@ function createIssue() {
 }
 
 function showResults(json) {
-  debugger
-  $('#results').append(`<h4>Forked Successfully!</h4><a href="${json}">${json}</a>`);
+  $('#results').append(`<h4>Forked Successfully!</h4><a href="${json.url}">${json.full_name}</a>`);
 }
 
 function forkRepo() {
