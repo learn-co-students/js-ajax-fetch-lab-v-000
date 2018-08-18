@@ -1,4 +1,3 @@
-// const token = '959bb5d5bd7704a5f216f3f07e0551953d8e3e4d';
 const token = "magicalether";
 
 function getIssues() {
