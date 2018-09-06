@@ -24,11 +24,25 @@ function showResults(json) {
 }
 
 function createIssue() {
+
+  const url = `https://api.github.com/repos/abourke09//js-ajax-fetch-lab/issues`;
+
   const postData = {
     title: document.getElementById("title").value,
     body: document.getElementById("body").value
   }
-  document.getElementById("issues").innerHTML += `<h4>${postData.title}</h4><p>${postData.body}</p>`
+
+  fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(postData),
+      headers: {
+        Authorization: `token ${getToken()}`
+      }
+    })
+      .then(response => response.json())
+      .then(json => getIssues());
+
+  //document.getElementById("issues").innerHTML += `<h4>${postData.title}</h4><p>${postData.body}</p>`
 }
 
 function getIssues() {
