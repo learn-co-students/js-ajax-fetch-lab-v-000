@@ -37,7 +37,7 @@ function showResults(json) {
 }
 
 function forkRepo() {
-  //use fetch to fork it!
+
   	fetch(forks,   {
     	method: 'post',
     	headers: {
@@ -47,23 +47,8 @@ function forkRepo() {
 }
 
 function getToken() {
-
-  //change to your token to run in browser, but set
-  //back to '' before committing so all tests pass
   	return ''
 }
-
-
-
-
-
-
-
-// function getIssues() {
-//   fetch(`https://api.github.com/repos/tsyaeger/js-ajax-fetch-lab-v-000/issues`)
-//     .then(res => res.json())
-//     .then(showIssues);
-// }
 
 
 
