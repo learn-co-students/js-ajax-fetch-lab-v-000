@@ -1,4 +1,3 @@
-//const token = '3f662dd15dfc0e0a69cd5da1813fbd0ebf3ce1f6'
 
 //fetch('https://api.github.com/user/repos', {
 //  headers: {
