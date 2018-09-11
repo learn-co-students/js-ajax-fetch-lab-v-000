@@ -80,3 +80,4 @@ function showForkedRepo(repo) {
 
 function getToken() {
   return ''
+}
