@@ -3,7 +3,7 @@ const repoName = 'js-ajax-fetch-lab'
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return '03980af6437f1ee711534baf88aaa01efba79d01';
+  return '';
 }
 
 function forkRepo() {
@@ -29,7 +29,7 @@ function createIssue() {
   fetch(`https://api.github.com//repos/${user}/${repoName}/issues`,
     {
     method: 'POST',
-    body: `${json.stringify(issues)}`,
+    body: `${JSON.stringify(issues)}`,
     headers: {Authorization: `token ${getToken()}`}
   }).then(resp => resp.json()).then(json => getIssues(json))
 }
