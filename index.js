@@ -1,3 +1,6 @@
+// const baseURL = 'https://api.github.com';
+// const user = '<YOUR_USERNAME>';
+
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
@@ -6,20 +9,24 @@ function getToken() {
 
 function forkRepo() {
   const repo = 'learn-co-curriculum/js-ajax-fetch-lab';
+
+  // const repo = 'learn-co-curriculum/js-ajax-fetch-lab';
+  // const url = `${baseURL}/repos/${repo}/forks`;
+
   //use fetch to fork it!
   fetch('https://api.github.com/repos/'+ repo +'/forks',
-{
-  method: 'POST',
-  headers: {
-    Authorization: `token ${getToken()}`
-    }
-  }).then(res =>res.json())
-  .then(json =>showResults(json));
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `token ${getToken()}`
+        }
+      }).then(res =>res.json())
+      .then(json =>showResults(json));
 }
 
 function showResults(json) {
   //use this function to display the results from forking via the API
-  let forkedUrl = `<a id="forked-repo" href="${json.url}">Forked Repo</a>`;
+  let forkedUrl = `<a id="forked-repo" href="${json.html_url}">Forked Repo</a>`;
   document.getElementById('results').innHTML = forkedUrl;
 }
 
@@ -38,6 +45,24 @@ function createIssue() {
           Authorization: `token ${getToken()}`
           }
         }).then(res => console.log(res));
+
+
+        // const repo = `${user}/js-ajax-fetch-lab`;
+        // const url = `${baseURL}/repos/${repo}/issues`;
+        // const postData = {
+        //   title: document.getElementById('title').value,
+        //   body: document.getElementById('body').value
+        // };
+        //
+        // fetch(url, {
+        //   method: 'POST',
+        //   body: JSON.stringify(postData),
+        //   headers: {
+        //     Authorization: `token ${getToken()}`
+        //   }
+        // })
+        //   .then(res => res.json())
+        //   .then(json => getIssues());
     }
 
 function getIssues() {
