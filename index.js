@@ -1,22 +1,1 @@
-function getToken() {
-  //change to your token to run in browser, but set
-  //back to '' before committing so all tests pass
-  return '';
-}
-
-function forkRepo() {
-  const repo = 'learn-co-curriculum/js-ajax-fetch-lab';
-  //use fetch to fork it!
-}
-
-function showResults(json) {
-  //use this function to display the results from forking via the API
-}
-
-function createIssue() {
-  //use this function to create an issue based on the values input in index.html
-}
-
-function getIssues() {
-  //once an issue is submitted, fetch all open issues to see the issues you are creating
-}
+const token = ''function getToken() {  //change to your token to run in browser, but set  //back to '' before committing so all tests pass  return token;}function forkRepo() {  const repo = 'learn-co-curriculum/js-ajax-fetch-lab';  //use fetch to fork it!  fetch(`https://api.github.com/repos/${repo}/forks`, {    method: 'POST',    headers: {      Authorization: `token ${token}`    }  })  .then(response => response.json())  .then(json => showResults(json));}function showResults(json) {  document.getElementById("results").innerHTML = `<a href="${json.html_url}" target="_blank">"${json.html_url}"</a>`}function createIssue() {  let title = document.getElementById("title").value  let body = document.getElementById("body").value  let issue = {title: title, body: body}  fetch(`https://api.github.com/repos/awilmerding1/js-ajax-fetch-lab/issues`, {    method: 'POST',    body: JSON.stringify(issue),    headers: {      Authorization: `token ${token}`    }  })  .then(response => response.json())  .then(json => getIssues(json));}function getIssues() {  //once an issue is submitted, fetch all open issues to see the issues you are creating  fetch(`https://api.github.com/repos/awilmerding1/js-ajax-fetch-lab/issues`, {    headers: {      Authorization: `token ${token}`    }  })  .then(response => response.json())  .then(json => document.getElementById("issues").innerHTML = json.map(function(issue) {      return `<ul><li>${issue.title} - ${issue.body}</li></ul>`  }));}
