@@ -1,31 +1,37 @@
 function getIssues(el) {
-  let url = el.dataset.url + '/issues';
-  url = url.substring(0,7)+"api."+url.substring(8,19)+"repos/"+url.substring(19,url.length);
-    fetch(url).then(data => data.json()).then(json => showIssues(json));
+  console.log(el)
+  // debugger
+  // let user = document.querySelector('[data-user]').dataset.user;
+  let user = 'katrpilar';
+  let url = `https:/api.github.com/repos/${user}/javascript-fetch-lab/issues`;
+  console.log(url)
+  fetch(url).then(data => data.json()).then(json => showIssues(json));
 }
 
 function showIssues(data) {
   console.log(data);
-  return $('#issues').html(`<br><ul>${data.map( i =>
-    `${i.title} <br> ${i.body}`
-  ).join('')}</ul><br>`)
+  return $('#issues').html(`<ul>${data.map( i =>
+    `<li>${i.title} <br> ${i.body}</li>`
+  ).join('')}</ul>`)
 }
 
 function createIssue() {
-  let url = $('#search').attr('data-url');
-  let title = $('#title').val();
-  let body = $('#body').val();
+  // let user = document.querySelector('[data-user]').dataset.user;
+  let user = 'katrpilar'
+  let url = `https:/api.github.com/repos/${user}/javascript-fetch-lab/issues`;
+  let title = document.getElementById('title').value;
+  let body = document.getElementById('body').value;
   fetch(url,{
     body: JSON.stringify({
     "title": title,
     "body": body
     }),
-    method: "POST",
+    method: "post",
     headers:{
       "Content-Type": "application/json; charset=utf-8",
       Authorization: getToken()
     }
-}).then(data => data.json()).then(json => showIssues(json));
+}).then(data => data.json()).then(json => getIssues(json));
 }
 
 function showResults(json) {
@@ -34,7 +40,7 @@ function showResults(json) {
   newCommitUrl = newCommitUrl.substring(0,7)+"api."+newCommitUrl.substring(8,19)+"repos/"+newCommitUrl.substring(19,newCommitUrl.length);
   $('#search').attr('data-url', newCommitUrl);
 
-  return $("#results").html(`<a href=${json.html_url}>Show Forked Repo</a>
+  return $("#results").html(`<a href=${json.html_url} data-user="${json.owner.login}">Show Forked Repo</a>
     <br><a href=# data-url="${json.html_url}" onclick="getIssues(this);">Get Issues</a>
     `)
 }
