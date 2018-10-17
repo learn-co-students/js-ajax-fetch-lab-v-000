@@ -24,8 +24,10 @@ function forkRepo() {
 //In showResults, write code to display a link to the forked repo url (json.html_url). Append this link to the results div.
 function showResults(json) {
   //use this function to display the results from forking via the API
-  
+  const repoLink = json.html_url;
+  document.getElementById('results').innerHTML = repoLink;
 }
+
 
 function createIssue() {
   //use this function to create an issue based on the values input in index.html
