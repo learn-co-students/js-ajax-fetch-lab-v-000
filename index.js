@@ -25,8 +25,8 @@ function forkRepo() {
 //In showResults, write code to display a link to the forked repo url (json.html_url). Append this link to the results div.
 function showResults(json) {
   //use this function to display the results from forking via the API
-  const newdiv = $("<div id="results"></div>");
-  $(newdiv).append(json);
+  //const newdiv = $("<div id="results"></div>");
+  $("#results").append(showResults(json));
 }
 
 //var $newdiv1 = $( "<div id='object1'></div>" ),
