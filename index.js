@@ -16,7 +16,8 @@ function forkRepo() {
     }
   }
 )
-.then(res => res.json());
+.then(res => res.json())
+ .then(json => showResults(json));
 
 }
 //POST /repos/:owner/:repo/forks
@@ -24,8 +25,8 @@ function forkRepo() {
 //In showResults, write code to display a link to the forked repo url (json.html_url). Append this link to the results div.
 function showResults(json) {
   //use this function to display the results from forking via the API
-  const repoLink = (`${json.html_url}`).join('');
-  document.getElementById('results').innerHTML = repoLink;
+  const repoLink = json.html_url.join('');
+  document.getElementById("results").innerHTML = repoLink;
 }
 
 
