@@ -26,8 +26,8 @@ function showResults(json) {
 function createIssue() {
   //use this function to create an issue based on the values input in index.html
   const parameters = {
-    title: $('input#title').val(),
-    text: $('input#text').val()
+    title: document.getElementById('title').value,
+    body: document.getElementById('body').value
   };
 
   fetch(`https://api.github.com/repos/sarastanton/js-ajax-fetch-lab/issues`, {
@@ -38,12 +38,21 @@ function createIssue() {
     }
   })
     .then(res => res.json())
-    .then(json => getIssues(json));
+    .then(json => getIssues());
 }
 
-function getIssues(json) {
+function getIssues() {
   //once an issue is submitted, fetch all open issues to see the issues you are creating
-  // debugger
-  const issues = json.map(issue => `<li><p><strong> Title: </strong> ${issue.title}</p> <p><strong> Issue: </strong> ${issue.body} </p></li>`);
-  $('#issues').html(`<ul> ${issues} </ul>`)
+  fetch(`https://api.github.com/repos/sarastanton/js-ajax-fetch-lab/issues`, {
+    headers: {
+      Authorization: `token ${getToken()}`
+    }
+  })
+    .then(res => res.json())
+    .then(json => displayIssues(json));
+  }
+
+function displayIssues(json) {
+  const results = json.map(issue => `<li><p><strong> Title: </strong> ${issue.title}</p> <p><strong> Issue: </strong> ${issue.body} </p></li>`);
+  $('#issues').html(`<ul> ${results} </ul>`)
 }
