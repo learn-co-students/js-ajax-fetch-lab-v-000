@@ -1,7 +1,7 @@
-// // const token = '2bc6a1f15c5fd723460e0d6f93f044e8b79e94db'
+
 //
 function getToken() {
-  const token = '2bc6a1f15c5fd723460e0d6f93f044e8b79e94db'
+
   return '';
 }
 
