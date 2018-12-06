@@ -2,26 +2,20 @@
   "stats": {
     "suites": 3,
     "tests": 5,
-    "passes": 2,
+    "passes": 5,
     "pending": 0,
-    "failures": 3,
-    "start": "2018-12-06T15:18:53.212Z",
-    "end": "2018-12-06T15:18:53.336Z",
-    "duration": 124
+    "failures": 0,
+    "start": "2018-12-06T18:16:12.471Z",
+    "end": "2018-12-06T18:16:12.551Z",
+    "duration": 80
   },
   "tests": [
     {
       "title": "does not commit token",
       "fullTitle": "index does not commit token",
-      "duration": 2,
+      "duration": 0,
       "currentRetry": 0,
-      "err": {
-        "stack": "Error: Expected 'a11e27677045d49003ef5855b36af26a6a705c61' to equal ''\n    at assert (node_modules/expect/lib/assert.js:29:9)\n    at Expectation.toEqual (node_modules/expect/lib/Expectation.js:81:30)\n    at Context.it (test/index-test.js:25:24)",
-        "message": "Expected 'a11e27677045d49003ef5855b36af26a6a705c61' to equal ''",
-        "actual": "a11e27677045d49003ef5855b36af26a6a705c61",
-        "expected": "",
-        "showDiff": true
-      }
+      "err": {}
     },
     {
       "title": "creates a div with an id of \"issues\"",
@@ -42,59 +36,26 @@
       "fullTitle": "index fetch functions fetches the create issue api",
       "duration": 0,
       "currentRetry": 0,
-      "err": {
-        "stack": "TypeError: Cannot read property 'arguments' of undefined\n    at Context.it (test/index-test.js:64:37)",
-        "message": "Cannot read property 'arguments' of undefined"
-      }
+      "err": {}
     },
     {
       "title": "fetches the get issues api",
       "fullTitle": "index fetch functions fetches the get issues api",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
-      "err": {
-        "stack": "TypeError: Cannot read property 'arguments' of undefined\n    at Context.it (test/index-test.js:75:37)",
-        "message": "Cannot read property 'arguments' of undefined"
-      }
+      "err": {}
     }
   ],
   "pending": [],
-  "failures": [
+  "failures": [],
+  "passes": [
     {
       "title": "does not commit token",
       "fullTitle": "index does not commit token",
-      "duration": 2,
-      "currentRetry": 0,
-      "err": {
-        "stack": "Error: Expected 'a11e27677045d49003ef5855b36af26a6a705c61' to equal ''\n    at assert (node_modules/expect/lib/assert.js:29:9)\n    at Expectation.toEqual (node_modules/expect/lib/Expectation.js:81:30)\n    at Context.it (test/index-test.js:25:24)",
-        "message": "Expected 'a11e27677045d49003ef5855b36af26a6a705c61' to equal ''",
-        "actual": "a11e27677045d49003ef5855b36af26a6a705c61",
-        "expected": "",
-        "showDiff": true
-      }
-    },
-    {
-      "title": "fetches the create issue api",
-      "fullTitle": "index fetch functions fetches the create issue api",
       "duration": 0,
       "currentRetry": 0,
-      "err": {
-        "stack": "TypeError: Cannot read property 'arguments' of undefined\n    at Context.it (test/index-test.js:64:37)",
-        "message": "Cannot read property 'arguments' of undefined"
-      }
+      "err": {}
     },
-    {
-      "title": "fetches the get issues api",
-      "fullTitle": "index fetch functions fetches the get issues api",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {
-        "stack": "TypeError: Cannot read property 'arguments' of undefined\n    at Context.it (test/index-test.js:75:37)",
-        "message": "Cannot read property 'arguments' of undefined"
-      }
-    }
-  ],
-  "passes": [
     {
       "title": "creates a div with an id of \"issues\"",
       "fullTitle": "index index.html creates a div with an id of \"issues\"",
@@ -105,6 +66,20 @@
     {
       "title": "fetches the create fork api",
       "fullTitle": "index fetch functions fetches the create fork api",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "fetches the create issue api",
+      "fullTitle": "index fetch functions fetches the create issue api",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "fetches the get issues api",
+      "fullTitle": "index fetch functions fetches the get issues api",
       "duration": 1,
       "currentRetry": 0,
       "err": {}
