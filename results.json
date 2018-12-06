@@ -1,0 +1,88 @@
+{
+  "stats": {
+    "suites": 3,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2018-12-06T18:16:12.471Z",
+    "end": "2018-12-06T18:16:12.551Z",
+    "duration": 80
+  },
+  "tests": [
+    {
+      "title": "does not commit token",
+      "fullTitle": "index does not commit token",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "creates a div with an id of \"issues\"",
+      "fullTitle": "index index.html creates a div with an id of \"issues\"",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "fetches the create fork api",
+      "fullTitle": "index fetch functions fetches the create fork api",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "fetches the create issue api",
+      "fullTitle": "index fetch functions fetches the create issue api",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "fetches the get issues api",
+      "fullTitle": "index fetch functions fetches the get issues api",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    }
+  ],
+  "pending": [],
+  "failures": [],
+  "passes": [
+    {
+      "title": "does not commit token",
+      "fullTitle": "index does not commit token",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "creates a div with an id of \"issues\"",
+      "fullTitle": "index index.html creates a div with an id of \"issues\"",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "fetches the create fork api",
+      "fullTitle": "index fetch functions fetches the create fork api",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "fetches the create issue api",
+      "fullTitle": "index fetch functions fetches the create issue api",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "fetches the get issues api",
+      "fullTitle": "index fetch functions fetches the get issues api",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    }
+  ]
+}
