@@ -44,7 +44,7 @@ describe('index', () => {
     afterEach(() => {
       fetchSpy.restore();
     });
-
+    
     it('fetches the create fork api', () => {
       forkRepo();
       const url = fetchSpy.calls[0].arguments[0];
