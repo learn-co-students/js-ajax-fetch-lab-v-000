@@ -2,7 +2,7 @@ function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
 
-   return '';
+   return '11982134a1f26680d710fdebd9c1b831ba6e5e6e';
   }
 
 function forkRepo() {
@@ -10,7 +10,7 @@ function forkRepo() {
   const username = `learn-co-curriculum`
   //use fetch to fork it!
 
-    const token = '11982134a1f26680d710fdebd9c1b831ba6e5e6e';
+    const token = getToken();
     const postData = {
       body: 'Great stuff'
     };
