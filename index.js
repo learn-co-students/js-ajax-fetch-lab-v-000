@@ -2,7 +2,8 @@ function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
 
-   return '11982134a1f26680d710fdebd9c1b831ba6e5e6e';
+   let token = '';
+   return token;
   }
 
 function forkRepo() {
@@ -40,7 +41,7 @@ function showResults(string) {
 function createIssue() {
   //use this function to create an issue based on the values input in index.html
   // POST /repos/:owner/:repo/issues
-  const token = '11982134a1f26680d710fdebd9c1b831ba6e5e6e';
+  const token = getToken();
   const username = `BrettSWeisberg`
   const repo = 'js-ajax-fetch-lab';
 
