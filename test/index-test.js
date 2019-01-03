@@ -1,13 +1,13 @@
-const expect = require('expect');
-const fs = require('fs');
-const jsdom = require('jsdom');
-const path = require('path');
+var expect = require('expect');
+var fs = require('fs');
+var jsdom = require('jsdom');
+var path = require('path');
 
 describe('index', () => {
   before(done => {
-    const html = path.resolve(__dirname, '..', 'index.html');
-    const src = path.resolve(__dirname, '..', 'index.js');
-
+    var html = path.resolve(__dirname, '..', 'index.html');
+    var src = path.resolve(__dirname, '..', 'index.js');
+    
     jsdom.env(html, [src], (err, window) => {
       if (err) {
         return done(err);
@@ -47,11 +47,11 @@ describe('index', () => {
 
     it('fetches the create fork api', () => {
       forkRepo();
-      const url = fetchSpy.calls[0].arguments[0];
+      var url = fetchSpy.calls[0].arguments[0];
       expect(url).toMatch(
         /api.github.com\/repos\/learn-co-curriculum\/js-ajax-fetch-lab\/forks/
       );
-      const opts = fetchSpy.calls[0].arguments[1];
+      var opts = fetchSpy.calls[0].arguments[1];
       expect(opts.method).toMatch(/(post|POST)/);
       expect(opts.headers).toMatch(/Authorization: token\s./);
     });
@@ -61,10 +61,10 @@ describe('index', () => {
       document.getElementById('body').value = 'test body';
 
       createIssue();
-      const url = fetchSpy.calls[0].arguments[0];
+      var url = fetchSpy.calls[0].arguments[0];
       expect(url).toMatch(/js-ajax-fetch-lab\/issues/);
       expect(url).toNotMatch(/learn-co-curriculum/);
-      const opts = fetchSpy.calls[0].arguments[1];
+      var opts = fetchSpy.calls[0].arguments[1];
       expect(opts.method).toMatch(/(post|POST)/);
       expect(opts.headers).toMatch(/Authorization: token\s./);
       expect(opts.body).toMatch(/test body/);
@@ -72,7 +72,7 @@ describe('index', () => {
 
     it('fetches the get issues api', () => {
       getIssues();
-      const url = fetchSpy.calls[0].arguments[0];
+      var url = fetchSpy.calls[0].arguments[0];
       expect(url).toMatch(/js-ajax-fetch-lab\/issues/);
       expect(url).toNotMatch(/learn-co-curriculum/);
     });
