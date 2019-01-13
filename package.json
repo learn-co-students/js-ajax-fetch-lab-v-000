@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "debug-ide": "./bin/debug-ide",
-    "test": "mocha -R mocha-multi --reporter-options nyan=-,json=.results.json"
+    "test": "mocha -R mocha-multi --reporter-options dot=-,xunit=file.xml,nyan=-,json=.results.json"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,8 @@
     "mocha": "^5.2.0",
     "mocha-multi": "^1.0.1",
     "node-fetch": "^1.5.3"
+  },
+  "dependencies": {
+    "mocha-junit-reporter": "^1.18.0"
   }
 }
