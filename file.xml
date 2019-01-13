@@ -1,0 +1,7 @@
+<testsuite name="Mocha Tests" tests="5" failures="0" errors="0" skipped="0" timestamp="Sun, 13 Jan 2019 19:42:23 GMT" time="0.104">
+<testcase classname="index" name="does not commit token" time="0"/>
+<testcase classname="index index.html" name="creates a div with an id of &#x22;issues&#x22;" time="0.001"/>
+<testcase classname="index fetch functions" name="fetches the create fork api" time="0.001"/>
+<testcase classname="index fetch functions" name="fetches the create issue api" time="0"/>
+<testcase classname="index fetch functions" name="fetches the get issues api" time="0"/>
+</testsuite>
