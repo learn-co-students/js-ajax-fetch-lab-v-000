@@ -1,4 +1,4 @@
-const token = 'b9151e81def9060c42fb5bfba379e9adce7cdca9';
+const token = '';
  
 
 function getToken() {
