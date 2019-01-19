@@ -4,7 +4,7 @@ const token = '';
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return '';
+  return token;
 }
 
 function forkRepo() {
@@ -56,13 +56,12 @@ function getIssues() {
 				Authorization: `token ${token}`
 			}
 		}
-	).then(res => res.json()).then(data => showIssues(data))
+	).then(res => res.json())
+		.then(data => 
+			document.getElementById('issues').innerHTML = 
+			data.map(function(i){ 
+			`<li>${i.title}: ${i.body}</li>`;
+		})
+	)
 }
 
-function showIssues(data){
-	const issueInfo = data.map( i => 
-		`<li>${i.title}</li>
-		<li>${i.body}</li>`).join('');
-	const addHTML = '<ul>' + issueInfo + '</ul>'
-	document.getElementById('issues').innerHTML = addHTML
-}
