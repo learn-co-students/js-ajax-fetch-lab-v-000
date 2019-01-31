@@ -1,22 +1,55 @@
-function getToken() {
+const user = 'SaraGinsburg'
+const url = 'api.github.com/repos/'
+
+
+function getToken(){
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
+
   return '';
 }
 
 function forkRepo() {
+
   const repo = 'learn-co-curriculum/js-ajax-fetch-lab';
-  //use fetch to fork it!
-}
+  fetch(`${url}${repo}/forks`,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `token ${getToken()}`
+      }
+    }
+  ).then(res => res.json())
+   
+};
 
 function showResults(json) {
   //use this function to display the results from forking via the API
 }
 
 function createIssue() {
-  //use this function to create an issue based on the values input in index.html
+
+    const repo = '${user}/js-ajax-fetch-lab/issues'
+    const postData = {title: document.getElementById('title').value, body: document.getElementById('body').value}
+
+    fetch(`${url}${repo}`,
+    {
+      method: 'POST',
+      body: JSON.stringify(postData),
+      headers: {
+        Authorization: `token ${getToken()}`
+    }
+  }).then(res => res.json());
 }
 
 function getIssues() {
-  //once an issue is submitted, fetch all open issues to see the issues you are creating
+  const repo = '${user}/js-ajax-fetch-lab/issues'
+
+  fetch(`${url}${repo}`,
+  {
+    method: 'GET',
+    headers: {
+      Authorization: `token ${getToken()}`
+    }
+  }).then(res => res.json())
 }
