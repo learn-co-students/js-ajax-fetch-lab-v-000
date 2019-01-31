@@ -40,6 +40,7 @@ function createIssue() {
       }
     })
     .then(res => res.json())
+    .then(json => getIssues())
 }
 
 function getIssues() {
@@ -52,4 +53,14 @@ function getIssues() {
       }
     })
     .then(res => res.json())
+    .then(json => showIssues(json));
+}
+
+function showIssues(json) {
+  const result = `<ul>${json
+    .map(j =>
+    '<li><strong>Issue #' + j.number + ' ' + j.title + '</strong></li>' +
+    '<li>Details: ' + j.body + '</li>'
+  )}</ul>`;
+  document.getElementById('issues').innerHTML = result;
 }
