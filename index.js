@@ -12,7 +12,7 @@ function getOwnerRepo(owner) {
     return `${owner}/js-ajax-fetch-lab`;
 }
 
-function getForkRepoURL() {
+function getRepoToForkURL() {
     return getRootURL() + getOwnerRepo('learn-co-curriculum') + '/forks'
 }
 
@@ -23,7 +23,7 @@ function getIssuesURL() {
 function forkRepo() {
 
     //use fetch to fork it!
-    fetch(getForkRepoURL(), {
+    fetch(getRepoToForkURL(), {
             method: 'POST',
             headers: {
                 Authorization: `token ${getToken()}`
@@ -47,15 +47,29 @@ function createIssue() {
         body: document.getElementById("body").value
     }
     fetch(getIssuesURL(), {
-            method: 'POST',
-            body: JSON.stringify(postData),
-            headers: {
-                Authorization: `token ${getToken()}`
-            }
-        }).then(res => res.json())
-        .then(json => console.log(json));
+        method: 'POST',
+        body: JSON.stringify(postData),
+        headers: {
+            Authorization: `token ${getToken()}`
+        }
+    }).then(res => getIssues());
 }
 
 function getIssues() {
     //once an issue is submitted, fetch all open issues to see the issues you are creating
+    fetch(getIssuesURL(), {
+            method: 'GET',
+            headers: {
+                Authorization: `token ${getToken()}`
+            }
+        }).then(res => res.json())
+        .then(json => showIssues(json));
+}
+
+function showIssues(json) {
+    console.log(json)
+    var issuesTemplate = Handlebars.compile(document.getElementById("issue-template").innerHTML);
+    var issuesHTML = issuesTemplate(json);
+    document.getElementById("issues").innerHTML += `<ul> ${issuesHTML}</ul>`
+
 }
