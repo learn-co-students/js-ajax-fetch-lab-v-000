@@ -21,7 +21,6 @@ function getIssuesURL() {
 }
 
 function forkRepo() {
-
     //use fetch to fork it!
     fetch(getRepoToForkURL(), {
             method: 'POST',
