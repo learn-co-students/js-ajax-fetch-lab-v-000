@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <title>JavaScript fetch() Lab</title>
     <style>
-      .flexbox-container {
-        display: -ms-flex;
-        display: -webkit-flex;
-        display: flex;
-      }
-
-      .flexbox-container>div {
-        width: 50%;
-        padding: 10px;
-      }
-
-      .flexbox-container>div:first-child {
-        margin-right: 20px;
-      }
+        .flexbox-container {
+            display: -ms-flex;
+            display: -webkit-flex;
+            display: flex;
+        }
+        
+        .flexbox-container>div {
+            width: 50%;
+            padding: 10px;
+        }
+        
+        .flexbox-container>div:first-child {
+            margin-right: 20px;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <main id="main">
-      <div id="errors"></div>
+        <div id="errors"></div>
     </main>
     <div class="flexbox-container">
-      <div>
-        <h3>Create Fork</h3>
-        <p><a href="#" onclick="forkRepo()">Fork Repository</a></p>
-        <div id="results"></div>
-      </div>
-      <div>
-        <h3>Issues</h3>
         <div>
-          Issue Title: <input type="text" id="title"><br> Issue Text: <input type="text" id="body"><br>
-          <a href="#" id="search" onclick="createIssue()">Create Issue</a>
+            <h3>Create Fork</h3>
+            <p><a href="#" onclick="forkRepo()">Fork Repository</a></p>
+            <div id="results"></div>
         </div>
-        <div id="issues"></div>
-      </div>
+        <div>
+            <h3>Issues</h3>
+            <div>
+                Issue Title: <input type="text" id="title"><br> Issue Text: <input type="text" id="body"><br>
+                <a href="#" id="search" onclick="createIssue()">Create Issue</a>
+            </div>
+            <div id="issues"></div>
+        </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
     <script src="index.js"></script>
-  </body>
+    <script id="issue-template" type="text/x-handlebars-template">
+        {{#each this}}
+        <li>Title: {{title}}<br>Text: {{body}}</li>
+
+        {{/each}}
+    </script>
+</body>
 
 </html>
