@@ -23,7 +23,7 @@ next `then` as an argument.
 
 ### Authentication Motivation
 
-Many APIs require users to pass an authentication token in order to make a 
+Many APIs require users to pass an authentication token in order to make a
 request. When APIs first appeared, developers saw limitless possibilities
 of finding people, finding their friends, connecting them based on interest
 and doing Good Things In the World.
@@ -35,9 +35,9 @@ off to the highest bidder and all of it was _perfectly legal_.
 
 But uses such as this are painful for the API provider. First it cuts them out
 of a revenue stream _while_ it bangs away at their server infrastructure. This
-can lead the server(s) to crash or for the usage bill at a provider (such as 
+can lead the server(s) to crash or for the usage bill at a provider (such as
 Amazon AWS) to be destructively expensive. In the early 2000's "bot" usage of
-Twitter was one of the contributing factors for the site's frequent downtime 
+Twitter was one of the contributing factors for the site's frequent downtime
 and "[FailWhale][]."
 
 "Bots" can also bog down service by sending update (POST) requests over and over.
@@ -207,4 +207,3 @@ and are using the most recent versions of node and nvm.
 [FailWhale]: http://www.yiyinglu.com/?portfolio=lifting-a-dreamer-aka-twitter-fail-whale
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/js-ajax-fetch-lab' title='JavaScript Fetch Lab'>Javascript Fetch Lab</a> on Learn.co and start learning to code for free.</p>
-
