@@ -1,5 +1,4 @@
-const name = ""
-const repo = 'learn-co-curriculum/js-ajax-fetch-lab';
+const name = "adam-barton"
 
 function getToken() {
     //change to your token to run in browser, but set
@@ -8,7 +7,7 @@ function getToken() {
 }
 
 function forkRepo() {
-
+    const repo = 'learn-co-curriculum/js-ajax-fetch-lab';
     fetch(`https://api.github.com/repos/${repo}/forks`, {
         method: 'POST',
         headers: {
@@ -31,7 +30,7 @@ function createIssue() {
         title: document.getElementById('title').value,
         body: document.getElementById('body').value
     };
-    fetch(`https://api.github.com/${name}/${repo}/issues`, {
+    fetch(`https://api.github.com/repos/${name}/js-ajax-fetch-lab/issues`, {
         method: 'POST',
         body: JSON.stringify(issueFields),
         headers: {
@@ -39,8 +38,12 @@ function createIssue() {
         }
     }).then(response => response.json()).then(json => getIssues())
 }
-
-function getIssues() {
-    //once an issue is submitted, fetch all open issues to see the issues you are creating
-    console.log("Hello")
-}
+https: //github.com/adam-barton/js-ajax-fetch-lab-v-000/issues
+    function getIssues() {
+        //once an issue is submitted, fetch all open issues to see the issues you are creating
+        fetch(`https://api.github.com/repos/${name}/js-ajax-fetch-lab/issues`, {
+            headers: {
+                authorization: `token ${getToken()}`
+            }
+        }).then(response => response.json()).then(json => console.log(json))
+    }
