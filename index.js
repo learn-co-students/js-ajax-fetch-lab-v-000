@@ -1,12 +1,20 @@
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return '';
+  return '8839e036469067ba75d724e3b225bf47c58c1163 ';
 }
 
 function forkRepo() {
   const repo = 'learn-co-curriculum/js-ajax-fetch-lab';
-  //use fetch to fork it!
+  fetch(
+    `https://api.github.com/repos/${repo}/forks`,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `token getToken()`
+      }
+    }  
+  )
 }
 
 function showResults(json) {
@@ -20,3 +28,5 @@ function createIssue() {
 function getIssues() {
   //once an issue is submitted, fetch all open issues to see the issues you are creating
 }
+
+const token = "db7b6419cd70ad36bf3abfa55b1388f44ec991e0";
