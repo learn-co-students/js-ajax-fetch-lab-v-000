@@ -6,11 +6,28 @@ function getToken() {
 
 function forkRepo() {
   const repo = 'learn-co-curriculum/js-ajax-fetch-lab';
-  //use fetch to fork it!
+
+	const token = getToken();
+	const orgData = {
+		organization: 'cpdundon'
+	};
+	 
+	fetch(
+		'https://api.github.com/repos/' + repo + '/forks',
+		{
+			method: 'POST',
+			organization: JSON.stringify(orgData),
+			headers: {
+				Authorization: `token ${token}`
+			}
+		}
+	).then(res => showResults(res));
 }
 
 function showResults(json) {
-  //use this function to display the results from forking via the API
+  const forkResult = document.getElementById('results');
+	console.log(json);
+	forkResult.innerHTML = json.html_url;
 }
 
 function createIssue() {
