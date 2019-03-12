@@ -43,7 +43,7 @@ function createIssue() {
     }
   })
     .then(res => res.json())
-    .then(json => getIssues(json));
+    .then(json => getIssues());
 }
 
 function getIssues() {
@@ -56,5 +56,5 @@ function getIssues() {
       }
     }
   ).then(resp => resp.json())
-  .then(json => console.log(json))
+  .then(json => document.getElementById('issues').innerHTML = `Title: ${json[0].title}<br />Body: ${json[0].body}`)
 }
