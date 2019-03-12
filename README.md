@@ -1,4 +1,4 @@
-# JavaScript `fetch()` Lab
+\# JavaScript `fetch()` Lab
 
 ## Overview
 
