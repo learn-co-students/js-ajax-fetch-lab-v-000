@@ -1,7 +1,7 @@
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return 'b9343c51f27d7152181b6841155a2cc4ed12734a';
+	return '';
 }
 
 function forkRepo() {
@@ -32,13 +32,14 @@ function showResults(json) {
 }
 
 function createIssue() {
-	const repoUrl = document.getElementById('repo_url').href;
+  const repo = 'cpdundon/js-ajax-fetch-lab';
+	//const repoUrl = document.getElementById('repo_url').href;
 	const title =  document.getElementById('title').value;
 	const body = document.getElementById('body').value;
 
-	const splitUrl = repoUrl.split('/');
+	const splitUrl = repo.split('/');
 	let postUrl = splitUrl[splitUrl.length - 2] + "/" + splitUrl[splitUrl.length - 1];
-	postUrl = 'https://api.github.com/repos/' + postUrl + '/issues'; 
+	postUrl = 'https://api.github.com/repos/' + postUrl + '/issues/'; 
 
 	const token = getToken();
 	const issueData = {
@@ -63,7 +64,7 @@ function getIssues(getUrl) {
   //once an issue is submitted, fetch all open issues to see the issues you are creating
 
 	const token = getToken();
-	wait(2000); // Wait 2 seconds for the data to settle at GitHub.	
+	//wait(2000); // Wait 2 seconds for the data to settle at GitHub.	
 
 	fetch(
 		getUrl,
@@ -74,14 +75,14 @@ function getIssues(getUrl) {
 			}
 		}
 	).then(res => res.json() 
-	).then(json => printIssues(json));
+	).then(json => printIssues(json, getUrl));
 }
 
-function printIssues(json) {
+function printIssues(json, getUrl) {
 	console.log(json);
 	const issuesDiv = document.getElementById('issues');
 	const issueList = `<ul>${json
-    .map(i => '<li><a href="' + i.url  + '">' + i.title + '</a></li>')
+    .map(i => '<li><a href="' + 'https://github.com/cpdundon/js-ajax-fetch-lab/issues' + '">' + i.title + '</a></li>')
     .join('')}</ul>`;
 	issuesDiv.innerHTML = issueList;
 }
