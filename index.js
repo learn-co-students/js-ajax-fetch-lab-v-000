@@ -5,15 +5,9 @@ function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
   //return '';
-  const token = '128a5c28febd7ef353f74f53548730798932af68';
+  const token = '';
 
-  fetch('https://api.github.com/user/repos', {
-    headers: {
-      Authorization: `token ${token}`
-    }
-  })
-  .then(res => res.json())
-  .then(json => console.log(json));
+  return token;
 }
 
 function forkRepo() {
