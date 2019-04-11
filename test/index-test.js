@@ -17,7 +17,7 @@ describe('index', () => {
         global[key] = window[key];
       });
 
-      //done();
+      done();
     });
   });
 
