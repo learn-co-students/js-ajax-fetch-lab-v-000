@@ -23,11 +23,13 @@ describe('index', () => {
 
   it('does not commit token', () => {
     expect(getToken()).toEqual('');
+
   });
 
   describe('index.html', () => {
     it('creates a div with an id of "issues"', () => {
       expect(document.getElementById('issues')).toExist();
+
     });
   });
 
