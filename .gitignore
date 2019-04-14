@@ -2,6 +2,8 @@
 
 .DS_Store
 
+*.env
+
 ### Node ###
 # Logs
 logs
@@ -43,5 +45,3 @@ jspm_packages
 /log/*
 !/log/.keep
 /tmp
-
-
