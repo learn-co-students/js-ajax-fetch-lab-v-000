@@ -33,9 +33,8 @@ function createIssue() {
 
   fetch(url, {
     method: 'post',
-   body: JSON.stringify(
-        {
-          title: `${title}`,
+    body: JSON.stringify(
+      {title: `${title}`,
         body: `${body}`
       })
     headers: {
