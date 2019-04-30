@@ -31,7 +31,6 @@ function createIssue() {
   const title = document.getElementById('title').value;
   const body = document.getElementById('body').value;
 
-
   fetch(url, {
     method: 'post',
     body: JSON.stringify(postData),
