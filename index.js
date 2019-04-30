@@ -27,7 +27,7 @@ function showResults(json) {
 }
 
 function createIssue() {
-  const url = `${baseURL}/repos/${user}/js-ajax-fetch-lab/issues`
+  const url = `${baseURL}/repos/${user}/js-ajax-fetch-lab/issues`;
   const title = document.getElementById('title').value;
   const body = document.getElementById('body').value;
 
