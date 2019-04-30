@@ -1,6 +1,6 @@
 const baseURL = 'https://api.github.com';
 const user = 'NotoriousCottonball';
-const token = '';
+let token = '';
 
 function getToken() {
   //change to your token to run in browser, but set
@@ -15,11 +15,14 @@ function forkRepo() {
   fetch(url, {
     method: 'POST',
     headers: {
-      Authorization: `token ${token}`
+      'Authorization': `token ${token}`
     }
   })
   .then(res => res.json())
-  .then(json => showResults(json));
+  .then(json => {
+    console.log(json);
+    showResults(json);
+  });
 }
 
 function showResults(json) {
@@ -30,18 +33,22 @@ function createIssue() {
   const url = `${baseURL}/repos/${user}/js-ajax-fetch-lab/issues`;
   const title = document.getElementById('title').value;
   const body = document.getElementById('body').value;
+  const postData = {
+        title: `${title}`,
+        body: `${body}`
+  };
 
   fetch(url, {
     method: 'POST',
+    body: JSON.stringify(postData),
     headers: {
-      Authentication: `token: ${getToken()}`
-    },
-    body: JSON.stringify({ 
-        title: `${title}`,
-        body: `${body}`
-    })
+      Authorization: `token ${token}`
+    }
   })
-  .then(getIssues());
+  .then(res => {
+    console.log(res);
+    getIssues();
+  });
 }
 
 function getIssues() {
@@ -49,10 +56,10 @@ function getIssues() {
 
   fetch(url, {
     headers: {
-      Authorization: `token: ${getToken()}`
+      Authorization: `token ${token}`
     }
   })
   .then(res => res.json())
   .then(json => document.getElementById('issues').innerHTML = json.map(
-        i => i.title + `<br />`));
+        i => i.title + ' -- '+ i.body + '<br><br>').join(''));
 }
