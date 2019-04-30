@@ -40,7 +40,6 @@ function createIssue() {
         title: `${title}`,
         body: `${body}`
     })
-    
   })
   .then(res => res.json())
   .then(json => getIssues());
