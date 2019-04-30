@@ -32,7 +32,7 @@ function createIssue() {
   const body = document.getElementById('body').value;
 
   fetch(url, {
-    method: 'post',
+    method: 'POST',
     headers: {
       Authentication: `token: ${getToken()}`
     },
