@@ -37,9 +37,7 @@ function createIssue() {
         title: `${title}`,
         body: `${body}`
     })
-    headers: {
-      Authentication: `token: ${getToken()}`
-    }
+    
   })
   .then(res => res.json())
   .then(json => getIssues());
