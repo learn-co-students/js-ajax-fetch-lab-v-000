@@ -1,4 +1,3 @@
- $.ajaxPrefilter(function(options, originalOptions, xhr){ if ( !options.crossDomain ) { rails.CSRFProtection(xhr); }});
 
 const baseURL = 'https://api.github.com';
 const user = 'NotoriousCottonball';
