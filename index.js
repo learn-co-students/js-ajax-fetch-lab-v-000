@@ -29,7 +29,7 @@ function showResults(json) {
 function createIssue() {
   const url = `${baseURL}/repos/${user}/js-ajax-fetch-lab/issues`
   const title = document.getElementById('title').value;
-  const text = document.getElementById('body').value;
+  const body = document.getElementById('body').value;
 
   const postData = {
     title: title,
