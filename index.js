@@ -27,9 +27,39 @@ function showResults(json) {
 }
 
 function createIssue() {
-  //use this function to create an issue based on the values input in index.html
+  const repo = `${user}/js-ajax-fetch-lab`
+  const url = `${baseURL}/repos/${repo}/issues`
+  const title = document.getElementById('title').value;
+  const text = document.getElementById('body').value;
+
+  const postData = {
+    title: title,
+    body: text
+  };
+
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(postData),
+    headers: {
+      Authentication: `token: ${getToken()}`
+    }
+  })
+  .then(res => res.json())
+  .then(json => getIssues());
 }
 
 function getIssues() {
   //once an issue is submitted, fetch all open issues to see the issues you are creating
+  const repo = `${user}/js-ajax-fetch-lab`
+  const url = `${baseURL}/repos/${repo}/issues`
+
+  fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `token: ${getToken()}`
+    }
+  })
+  .then(res => res.json())
+  .then(json => console.log(json));
+
 }
