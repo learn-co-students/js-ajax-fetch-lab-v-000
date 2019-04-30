@@ -33,7 +33,11 @@ function createIssue() {
 
   fetch(url, {
     method: 'post',
-    body: JSON.stringify(postData),
+   body: JSON.stringify(
+        {
+          title: `${title}`,
+        body: `${body}`
+      })
     headers: {
       Authentication: `token: ${getToken()}`
     }
