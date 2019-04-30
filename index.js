@@ -45,7 +45,7 @@ function createIssue() {
 }
 
 function getIssues() {
-  const url = `${baseURL}/repos/${user}/js-ajax-fetch-lab/issues`;
+  const url = `${baseURL}/repos/${user}/js-ajax-fetch-lab-v-000/issues`;
 
   fetch(url, {
     headers: {
