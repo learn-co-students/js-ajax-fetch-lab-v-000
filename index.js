@@ -41,8 +41,7 @@ function createIssue() {
         body: `${body}`
     })
   })
-  .then(res => res.json())
-  .then(json => getIssues());
+  .then(getIssues());
 }
 
 function getIssues() {
