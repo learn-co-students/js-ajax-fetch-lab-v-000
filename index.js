@@ -1,5 +1,3 @@
-getToken()
-
 const baseURL = 'https://api.github.com';
 const user = 'NotoriousCottonball';
 const token = '';
