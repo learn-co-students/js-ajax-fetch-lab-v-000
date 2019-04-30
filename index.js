@@ -23,7 +23,6 @@ function forkRepo() {
 }
 
 function showResults(json) {
-
   document.getElementById('results').innerHTML = `<a href=${json.html_url}>${json.html_url}</a>`;
 }
 
