@@ -15,7 +15,7 @@ const userName = 'barbchoy';
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return token;
+  return '';
 }
 
 function forkRepo() {
@@ -70,7 +70,7 @@ function getIssues() {
 
     fetch(url,{
         headers: {
-          Authorization: `token ${token}`;
+          Authorization: `token ${token}`
         }
     })
       .then(res => res.json())
