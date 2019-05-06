@@ -72,7 +72,3 @@ function getIssues() {
 function showIssues(json) {
   document.getElementById('issues').append(json)
 }
-
-
-
-//9a91f795ad182740463331e07cf2ab7e09a03e07
