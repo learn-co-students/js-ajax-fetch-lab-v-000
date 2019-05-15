@@ -1,7 +1,6 @@
 function getToken() {
-  //change to your token to run in browser, but set
-  //back to '' before committing so all tests pass
-  // const token = 'd2f9244a729ab0360204bc58137c139bd8ead593'
+  // had to remove token for Authorization so it doesn't upload to github
+  // const token = x
   // return token
   return '';
 }
