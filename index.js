@@ -8,6 +8,7 @@ function getToken() {
   
 const baseURL = 'https://api.github.com'
 const user = 'corytveten';
+const user2 = 'xyz';
   
 function forkRepo() {
   const repo = 'learn-co-curriculum/js-ajax-fetch-lab';
