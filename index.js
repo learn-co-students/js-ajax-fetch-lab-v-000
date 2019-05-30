@@ -1,21 +1,22 @@
+const baseUrl= "https://api.github.com/"
+
 function getToken() {
-  // const token = 'de04a744d8883853262ec76bfe19ea957b0003f1';
+  // const token = 'a6a51fb6b432c0502e4aa9cc4e678ada1dc3b45c'
   // return token;
   return '';
 }
 
 function forkRepo() {
   const repo = 'learn-co-curriculum/js-ajax-fetch-lab';
-  fetch(
-    'https://api.github.com/repos/' + repo + '/forks',
+  fetch( baseUrl + 'repos/' + repo + '/forks',
     {
-      method: post
-      headers: {
-        Authorization: `token ${getToken()}`
-      }
+    method: 'POST',
+    headers: {
+      Authorization: `token ${getToken()}`
     }
-  ).then(res => res.json())
-  .then(json => showResults(json));
+  })
+    .then(res => res.json())
+    .then(json => showResults(json));
 }
 
 function showResults(json) {
@@ -23,9 +24,29 @@ function showResults(json) {
 }
 
 function createIssue() {
-  //use this function to create an issue based on the values input in index.html
+  const url = baseUrl + "repos/egreen724/js-ajax-fetch-lab/issues"
+  const postData = { title: document.getElementById('title').value,
+                    body: document.getElementById('body').value}
+
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(postData)
+    headers: {
+      Authorization: `token ${getToken()}`
+    }
+  })
+    .then(res => res.json())
+    .then(json => getIssues());
 }
 
 function getIssues() {
-  //once an issue is submitted, fetch all open issues to see the issues you are creating
+
+  fetch(baseUrl + "repos/egreen724/js-ajax-fetch-lab/issues", {
+    method: 'GET',
+    headers: {
+      Authorization: `token ${getToken()}`
+    }
+  })
+  .then(res => res.json())
+  .then(json => document.getElementById('issues').append(json));
 }
