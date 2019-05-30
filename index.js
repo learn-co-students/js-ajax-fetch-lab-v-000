@@ -25,12 +25,14 @@ function showResults(json) {
 
 function createIssue() {
   const url = baseUrl + "repos/egreen724/js-ajax-fetch-lab/issues"
-  const postData = { title: document.getElementById('title').value,
-                    body: document.getElementById('body').value}
+  const postData = {
+    title: document.getElementById('title').value,
+    body: document.getElementById('body').value
+  };
 
   fetch(url, {
     method: 'POST',
-    body: JSON.stringify(postData)
+    body: JSON.stringify(postData),
     headers: {
       Authorization: `token ${getToken()}`
     }
@@ -39,9 +41,11 @@ function createIssue() {
     .then(json => getIssues());
 }
 
-function getIssues() {
 
-  fetch(baseUrl + "repos/egreen724/js-ajax-fetch-lab/issues", {
+function getIssues() {
+  const url = baseUrl + "repos/egreen724/js-ajax-fetch-lab/issues"
+
+  fetch(url, {
     method: 'GET',
     headers: {
       Authorization: `token ${getToken()}`
