@@ -5,14 +5,14 @@ function getToken() {
   //back to '' before committing so all tests pass
   return '';
 }
-//09b2ad94a672cbcfceb9388194b97dcb20fbd98a
+//
 function forkRepo() {
 
   fetch("https://api.github.com/repos/learn-co-curriculum/js-ajax-fetch-lab/forks",
   {
     method: 'POST',
     headers: {
-      Authorization: `token 09b2ad94a672cbcfceb9388194b97dcb20fbd98a`
+      Authorization: `token `
     }
   }
 ).then(res => console.log(res));
@@ -28,7 +28,7 @@ function showResults(json) {
 
 function createIssue() {
   //use this function to create an issue based on the values input in index.html
-  fetch("https://api.github.com/repos/learn-co-curriculum/js-ajax-fetch-lab/issues",
+  fetch("https://api.github.com/repos/swarbrick85/js-ajax-fetch-lab/issues",
   {
     method: 'POST',
     headers: {
@@ -42,4 +42,12 @@ function createIssue() {
 
 function getIssues() {
   //once an issue is submitted, fetch all open issues to see the issues you are creating
+  fetch("https://api.github.com/repos/swarbrick85/js-ajax-fetch-lab/issues",
+  {
+    method: 'GET',
+    headers: {
+      Authorization: `token `
+    }
+  }
+  ).then(res => console.log(res));
 }
