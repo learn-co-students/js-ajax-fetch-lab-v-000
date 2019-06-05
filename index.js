@@ -37,7 +37,7 @@ function createIssue() {
     title: `${document.getElementById('title').value}`,
     body: `${document.getElementById('body').value}`
   }
-).then(res => console.log(res));)
+).then(res => console.log(res));
 }
 
 function getIssues() {
