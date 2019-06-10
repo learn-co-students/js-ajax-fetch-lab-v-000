@@ -1,36 +1,59 @@
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-
-
-  const token = '9d8cb2a068d9fd4191d1ddaefb8540eb4f74c4ea';
-
-    fetch(`https://api.github.com/user/repos`, {
-      headers: {
-        Authorization: `token ${token}`
-      }
-    })
-      .then(res => res.json())
-      .then(json => console.log(json));
-      return '9d8cb2a068d9fd4191d1ddaefb8540eb4f74c4ea';
+  return '';
 }
 
+
+
 function forkRepo() {
-  // const repo = 'MDAM182/js-ajax-fetch-lab-v-000';
-  // fetch(repo)
-  // .then(resp => resp.json())
-  // .then(json => console.log(json));
-  // //use fetch to fork it!
+  const repo = 'learn-co-curriculum/js-ajax-fetch-lab';
+  //use fetch to fork it!
+  // POST /repos/:owner/:repo/forks
+  fetch(`https://api.github.com/repos/${repo}/forks`, {
+      method: 'POST',
+      headers: {
+        Authorization: `token ${getToken()}`
+      }
+    }
+  ).then(resp => resp.json())
+  .then(json => showResults(json))
 }
 
 function showResults(json) {
   //use this function to display the results from forking via the API
+  document.getElementById('results').innerHTML = `<a href=${json.html_url}>${json.html_url}</a>`
 }
 
 function createIssue() {
   //use this function to create an issue based on the values input in index.html
+  const repo = 'MDAM182/js-ajax-fetch-lab-v-000';
+  const title = document.getElementById("title").value;
+  const body = document.getElementById("body").value;
+  const postData = {
+    title: `${title}`,
+    body: `${body}`
+  };
+
+  fetch(`https://api.github.com/repos/${repo}/issues`, {
+      method: 'POST',
+      body: JSON.stringify(postData),
+      headers: {
+        Authorization: `token ${getToken()}`
+      }
+    }
+  ).then(resp => resp.json())
+  .then(json => getIssues());
 }
 
 function getIssues() {
   //once an issue is submitted, fetch all open issues to see the issues you are creating
+  const repo = 'MDAM182/js-ajax-fetch-lab-v-000';
+  fetch(`https://api.github.com/repos/${repo}/issues`, {
+      headers: {
+        Authorization: `token ${getToken()}`
+      }
+    }
+  ).then(resp => resp.json())
+  .then(json => console.log(json))
 }
