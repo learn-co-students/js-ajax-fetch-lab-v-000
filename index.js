@@ -1,7 +1,7 @@
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return '8f7668cdc7b0de80aee2d54e10c384e7552bedc4';
+  return '';
 }
 
 
