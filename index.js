@@ -1,7 +1,7 @@
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return '';
+  return '8f7668cdc7b0de80aee2d54e10c384e7552bedc4';
 }
 
 
@@ -27,7 +27,7 @@ function showResults(json) {
 
 function createIssue() {
   //use this function to create an issue based on the values input in index.html
-  const repo = 'MDAM182/js-ajax-fetch-lab-v-000';
+  const repo = 'MDAM182/js-ajax-fetch-lab';
   const title = document.getElementById("title").value;
   const body = document.getElementById("body").value;
   const postData = {
@@ -48,7 +48,7 @@ function createIssue() {
 
 function getIssues() {
   //once an issue is submitted, fetch all open issues to see the issues you are creating
-  const repo = 'MDAM182/js-ajax-fetch-lab-v-000';
+  const repo = 'MDAM182/js-ajax-fetch-lab';
   fetch(`https://api.github.com/repos/${repo}/issues`, {
       headers: {
         Authorization: `token ${getToken()}`
