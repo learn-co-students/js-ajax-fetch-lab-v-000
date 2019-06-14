@@ -1,5 +1,5 @@
 const baseURL = 'https://api.github.com';
-const user = '<YOUR NAME>';
+const user = 'ryanmanchester';
 
 function getToken() {
   //change to your token to run in browser, but set
@@ -25,7 +25,7 @@ function forkRepo() {
 function showResults(json) {
   //use this function to display the results from forking via the API
   const results = document.getElementById('results');
-  return results.append(json.html_url);
+  return results.innerHTML += json.html_url;
 }
 
 function createIssue() {
@@ -51,5 +51,5 @@ function getIssues() {
     headers: {
       Authorization: `token ${getToken()}`
     }
-  }).then(resp => resp.json()).then(json => json.map(j =>  result.append(j.body)));
+  }).then(resp => resp.json()).then(json => console.log(json));
 }
