@@ -1,5 +1,5 @@
 const baseURL = 'https://api.github.com';
-const user = 'lpzraf';
+const user = '';
 
 function getToken() {
   //change to your token to run in browser, but set
@@ -25,6 +25,7 @@ function showResults(json) {
 }
 
 function createIssue() {
+  const repo = 'js-ajax-fetch-lab';
   //use this function to create an issue based on the values input in index.html
   let formTitle = document.getElementById('title').value
   let formContent = document.getElementById('body').value
@@ -42,9 +43,29 @@ function createIssue() {
 })
   .then(res => res.json())
   .then(json => console.log(json));
+}
 
 
 
 function getIssues() {
-  //once an issue is submitted, fetch all open issues to see the issues you are creating
+  // once an issue is submitted, fetch all open issues to see the issues you are creating
+    fetch(baseURL + '/repos/' + user + '/' + 'js-ajax-fetch-lab' + '/issues', {
+      headers: {
+        Authorization: `token ${getToken()}`
+      }
+  })
+    .then(res => res.json())
+    .then(json => console.log(json));
+
+
+
+  // const repo = `${user}/js-ajax-fetch-lab`;
+  // const url = `${baseURL}/repos/${repo}/issues`;
+  // fetch(url, {
+  //   headers: {
+  //     Authorization: `token ${getToken()}`
+  //   }
+  // })
+  //   .then(res => res.json())
+  //   .then(json => console.log(json)); 
 }
