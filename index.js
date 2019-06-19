@@ -1,6 +1,6 @@
 const baseURL = 'https://api.github.com';
 const user = 'codingmamakaz';
-// const token = ' 4dcaba4cea7646da42e24fbecbac840a7786380b'
+// const token = 'f309b3fbb27a2e7a6d7320dd2b8ac4724fc786b8'
 const token = ''
 
 function getToken() {
@@ -29,9 +29,9 @@ function createIssue() {
   const issueTitle = document.getElementById('title').value
   const issueBody = document.getElementById('body').value
   const repo = '/js-ajax-fetch-lab'
-  const myIssues = baseURL + '/repos/' + user + repo + '/issues'
+  const issues = baseURL + '/repos/' + user + repo + '/issues'
 
-  fetch(myIssues, {
+  fetch(issues, {
     method: 'POST',
     headers: {
       Authorization: `token ${token}`},
@@ -39,12 +39,19 @@ function createIssue() {
     })
 }
 function getIssues() {
-  // const repo = '/js-ajax-fetch-lab'
-  // const myIssue = baseURL + '/repos/' + user + repo + '/issues'
+  const repo = '/js-ajax-fetch-lab'
+  const myIssues = baseURL + '/repos/' + user + repo + '/issues'
+  fetch(myIssues, {
+    headers: {
+      Authorization: `token ${token}`}
+  })
+  // .then(response => response.json())
+  // .then(json => showResults(json));
+  }
   // const 
   // document.getElementById('issues').innerHTML = issues;
 
   //once an issue is submitted, fetch all open issues to see the issues you are creating
-}
+
 
 // GET /repos/:owner/:repo/issues
