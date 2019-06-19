@@ -1,6 +1,5 @@
 const baseURL = 'https://api.github.com';
 const user = 'codingmamakaz';
-// const token = 'f309b3fbb27a2e7a6d7320dd2b8ac4724fc786b8'
 const token = ''
 
 function getToken() {
@@ -30,6 +29,7 @@ function createIssue() {
   const issueBody = document.getElementById('body').value
   const repo = '/js-ajax-fetch-lab'
   const issues = baseURL + '/repos/' + user + repo + '/issues'
+  // const issueList = document.getElementById('issues').value
 
   fetch(issues, {
     method: 'POST',
@@ -37,21 +37,28 @@ function createIssue() {
       Authorization: `token ${token}`},
     body: JSON.stringify({title: issueTitle, body: issueBody})
     })
+    .then(response => response.json())
+    .then(obj => getIssues(obj));
 }
-function getIssues() {
+
+
+function getIssues(){
   const repo = '/js-ajax-fetch-lab'
-  const myIssues = baseURL + '/repos/' + user + repo + '/issues'
-  fetch(myIssues, {
+  const issuesUrl = baseURL + '/repos/' + user + repo + '/issues'
+
+  fetch(issuesUrl, {
     headers: {
       Authorization: `token ${token}`}
   })
-  // .then(response => response.json())
-  // .then(json => showResults(json));
-  }
-  // const 
-  // document.getElementById('issues').innerHTML = issues;
+  .then(response => response.json())
+  .then(obj => displayIssues(obj))
+}
 
-  //once an issue is submitted, fetch all open issues to see the issues you are creating
-
-
-// GET /repos/:owner/:repo/issues
+function displayIssues(issuesArr){
+  let listIssues = '<ul>'
+  issuesArr.forEach(issue => {
+    listIssues += `<li>${issue.title}</li>`
+  })
+  '</ul>'
+  document.getElementById('issues').innerHTML = listIssues;
+}
