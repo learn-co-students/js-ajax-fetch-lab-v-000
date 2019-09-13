@@ -5,7 +5,7 @@ const user = 'mmarziano';
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  const token = 'f09ab8ec5bf2e3072eb6e84d8ab6a3210ac56c74';
+  const token = '';
   return '';
 }
 
