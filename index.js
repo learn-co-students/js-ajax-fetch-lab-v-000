@@ -5,7 +5,7 @@ const user = 'mmarziano';
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  const token = 'a66f06eaad0dfbc74283583785d4109db34ebe7f';
+  const token = 'f09ab8ec5bf2e3072eb6e84d8ab6a3210ac56c74';
   return '';
 }
 
@@ -59,10 +59,10 @@ function getIssues() {
 }
 
 function showIssues(res) {
-  i = 0
-  for(i = 0; i < res.length; i++) {
+  for(let i = 0; i < res.length; i++) {
     let title = res[i].title;
     let body = res[i].body;
+    $('#issues').empty();
     $('#issues').append("<p>" + `${title}`+ ": " + `${body}` + "</p>");
   }
 }
